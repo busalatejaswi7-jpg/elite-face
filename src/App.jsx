@@ -4,21 +4,12 @@ import bg from './assets/bg.jpg';
 const navItems = ['Home', 'About', 'Categories', 'Judges', 'Apply'];
 
 const stats = [
-  { icon: '✦', title: 'Open Nationwide', subtitle: 'Boys & Girls Across India' },
-  { icon: '⟡', title: 'Age Group', subtitle: '16 to 28 Years' },
-  { icon: '♛', title: 'Season Title', subtitle: 'Elite Face India — S1' },
-  { icon: '🏆', title: 'Luxury Rewards', subtitle: 'Cash, Editorial Shoots & Trophies' },
-  { icon: '◈', title: 'Audition Mode', subtitle: 'Online + Offline City Rounds' },
+  { label: 'Season', value: 'Elite Face India — S1' },
+  { label: 'Eligibility', value: 'Age 16–28' },
+  { label: 'Format', value: 'Online + City Auditions' },
 ];
 
-const categories = [
-  'Male Model',
-  'Female Model',
-  'Fashion Creator',
-  'Best Personality',
-  'Viral Face',
-  'Best Ramp Walk',
-];
+const categories = ['Male Model', 'Female Model', 'Fashion Creator', 'Best Personality', 'Viral Face', 'Best Ramp Walk'];
 
 const formFields = [
   { name: 'name', type: 'text', placeholder: 'Full Name' },
@@ -26,40 +17,6 @@ const formFields = [
   { name: 'category', type: 'text', placeholder: 'Category' },
   { name: 'city', type: 'text', placeholder: 'City' },
 ];
-
-const SectionTitle = ({ eyebrow, title, subtitle }) => (
-  <div className="mx-auto max-w-3xl text-center">
-    <p className="text-[11px] uppercase tracking-[0.42em] text-amber-300/85">{eyebrow}</p>
-    <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-[0.12em] text-zinc-100 sm:text-4xl">{title}</h2>
-    {subtitle ? <p className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">{subtitle}</p> : null}
-  </div>
-);
-
-const InfoCard = ({ icon, title, subtitle }) => (
-  <article className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.08] via-white/[0.03] to-transparent p-5 backdrop-blur-xl transition duration-500 hover:-translate-y-1 hover:border-amber-400/60 hover:shadow-[0_16px_50px_rgba(245,158,11,0.22)]">
-    <div className="absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100 bg-[radial-gradient(circle_at_10%_10%,rgba(245,158,11,0.35),transparent_42%)]" />
-    <div className="relative">
-      <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-full border border-amber-400/40 bg-amber-300/10 text-lg text-amber-200 shadow-[0_0_20px_rgba(245,158,11,0.35)]">
-        {icon}
-      </div>
-      <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-100">{title}</h4>
-      <p className="mt-2 text-sm text-zinc-300/80">{subtitle}</p>
-    </div>
-  </article>
-);
-
-const CategoryCard = ({ category, index }) => (
-  <article className="group relative overflow-hidden rounded-2xl border border-amber-200/15 bg-gradient-to-br from-zinc-900 via-black to-zinc-950 p-6 transition duration-500 hover:-translate-y-1.5 hover:border-amber-400/60 hover:shadow-[0_20px_60px_rgba(245,158,11,0.2)]">
-    <div className="absolute -left-16 top-0 h-40 w-40 rounded-full bg-amber-300/15 blur-3xl transition duration-500 group-hover:bg-amber-200/30" />
-    <div className="relative flex items-start justify-between gap-4">
-      <div>
-        <p className="text-[10px] uppercase tracking-[0.3em] text-zinc-500">Category</p>
-        <p className="mt-3 text-sm uppercase tracking-[0.16em] text-zinc-100">{category}</p>
-      </div>
-      <span className="rounded-full border border-amber-300/25 px-2.5 py-1 text-[10px] text-amber-100/90">0{index + 1}</span>
-    </div>
-  </article>
-);
 
 function App() {
   const [formData, setFormData] = useState({ name: '', age: '', category: '', city: '' });
@@ -92,22 +49,22 @@ function App() {
 
   return (
     <div className="min-h-screen bg-black text-zinc-100 antialiased">
-      <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_15%_10%,rgba(245,158,11,0.2),transparent_28%),radial-gradient(circle_at_80%_90%,rgba(245,158,11,0.14),transparent_34%),linear-gradient(120deg,rgba(255,255,255,0.04),transparent_30%)]" />
+      <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_50%_-8%,rgba(245,158,11,0.16),transparent_32%),linear-gradient(180deg,#050505_0%,#000_55%,#050505_100%)]" />
 
-      <nav className="sticky top-0 z-50 border-b border-white/10 bg-black/65 backdrop-blur-2xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-10">
-          <div className="text-sm font-semibold tracking-[0.34em] text-amber-300 sm:text-base">ELITE FACE INDIA</div>
+      <nav className="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-md">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+          <div className="text-sm font-semibold tracking-[0.3em] text-amber-300 sm:text-base">ELITE FACE INDIA</div>
 
           <div className="hidden items-center gap-8 lg:flex">
             {navItems.map((item) => (
-              <a key={item} href="#" className="text-[11px] uppercase tracking-[0.2em] text-zinc-300 transition hover:text-amber-200">
+              <a key={item} href="#" className="text-[11px] uppercase tracking-[0.18em] text-zinc-300 transition hover:text-amber-200">
                 {item}
               </a>
             ))}
           </div>
 
           <div className="flex items-center gap-3">
-            <button className="hidden rounded-full border border-amber-300/50 bg-amber-300/10 px-6 py-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-amber-100 transition hover:bg-amber-300 hover:text-black sm:block">
+            <button className="hidden rounded-full border border-amber-300/60 bg-amber-300 px-5 py-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-black transition hover:bg-amber-200 sm:block">
               Apply Now
             </button>
             <button
@@ -122,10 +79,10 @@ function App() {
         </div>
 
         {isMenuOpen ? (
-          <div className="border-t border-white/10 bg-black/90 px-4 py-4 lg:hidden">
-            <div className="flex flex-col gap-3">
+          <div className="border-t border-white/10 bg-black px-4 py-4 lg:hidden">
+            <div className="flex flex-col gap-2">
               {navItems.map((item) => (
-                <a key={item} href="#" className="rounded-lg px-3 py-2 text-xs uppercase tracking-[0.2em] text-zinc-300 transition hover:bg-amber-300/10 hover:text-amber-200">
+                <a key={item} href="#" className="rounded-md px-3 py-2 text-xs uppercase tracking-[0.18em] text-zinc-300 transition hover:bg-zinc-900 hover:text-amber-200">
                   {item}
                 </a>
               ))}
@@ -135,84 +92,66 @@ function App() {
       </nav>
 
       <header
-        className="relative isolate overflow-hidden"
+        className="relative overflow-hidden"
         style={{
           backgroundImage: `url(${bg})`,
           backgroundSize: 'cover',
-          backgroundPosition: '58% center',
+          backgroundPosition: 'center top',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-black/58 via-black/62 to-black/82" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_20%,rgba(251,191,36,0.24),transparent_36%),radial-gradient(circle_at_82%_42%,rgba(251,191,36,0.24),transparent_42%),linear-gradient(115deg,rgba(0,0,0,0.28),rgba(0,0,0,0.72))]" />
-        <div className="absolute right-[-8%] top-[10%] h-[34rem] w-[34rem] rounded-full bg-amber-300/12 blur-[130px]" />
-        <div className="absolute right-[8%] bottom-[-20%] h-[24rem] w-[24rem] rounded-full bg-amber-100/10 blur-[120px]" />
-        <div className="absolute inset-y-0 right-0 w-[42%] bg-gradient-to-l from-amber-300/8 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/62 to-black/88" />
+        <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(0,0,0,0.86)_15%,rgba(0,0,0,0.45)_48%,rgba(0,0,0,0.9)_100%)]" />
 
-        <div className="relative mx-auto grid min-h-[90vh] w-full max-w-7xl items-center gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 lg:px-10">
-          <div className="max-w-3xl">
-            <p className="animate-fade-up text-[11px] uppercase tracking-[0.5em] text-amber-300">Luxury Casting Platform</p>
-            <h1 className="mt-6 animate-fade-up text-5xl font-semibold leading-[0.95] tracking-[0.14em] text-amber-100 drop-shadow-[0_0_24px_rgba(251,191,36,0.35)] sm:text-7xl md:text-8xl">
-              ELITE FACE
-            </h1>
-            <p className="mt-3 animate-fade-up text-2xl font-light tracking-[0.5em] text-zinc-100 sm:text-3xl">INDIA</p>
-            <p className="mt-8 max-w-2xl animate-fade-up text-sm leading-relaxed text-zinc-300 sm:text-base">
-              India&apos;s premier runway discovery platform for new faces ready for cinematic campaigns, haute couture editorials, and global fashion visibility.
-            </p>
+        <div className="relative mx-auto flex min-h-[82vh] w-full max-w-6xl flex-col items-center justify-center px-4 py-20 text-center sm:px-6 lg:px-8">
+          <p className="text-[11px] uppercase tracking-[0.45em] text-amber-300">National Modeling Competition</p>
+          <h1 className="mt-5 text-5xl font-semibold leading-[0.92] tracking-[0.12em] text-amber-100 sm:text-7xl lg:text-8xl">ELITE FACE</h1>
+          <p className="mt-3 text-xl font-light tracking-[0.48em] text-zinc-100 sm:text-2xl">INDIA</p>
+          <p className="mt-8 max-w-2xl text-sm leading-relaxed text-zinc-300 sm:text-base">
+            A premium runway-first platform built to discover India&apos;s next fashion talents for editorials, campaigns, and live stage opportunities.
+          </p>
 
-            <div className="mt-10 flex animate-fade-up flex-col gap-4 sm:flex-row">
-              <button className="rounded-full bg-gradient-to-r from-amber-300 to-amber-500 px-8 py-3 text-xs font-bold uppercase tracking-[0.2em] text-black shadow-[0_12px_40px_rgba(251,191,36,0.35)] transition hover:scale-[1.02] hover:shadow-[0_18px_50px_rgba(251,191,36,0.45)]">
-                Start Application
-              </button>
-              <button className="rounded-full border border-white/35 bg-white/5 px-8 py-3 text-xs font-bold uppercase tracking-[0.2em] text-zinc-100 backdrop-blur-sm transition hover:border-amber-300/70 hover:bg-amber-300/10">
-                Explore Finalists
-              </button>
-            </div>
+          <div className="mt-10 flex w-full max-w-md flex-col gap-3 sm:flex-row sm:justify-center">
+            <button className="rounded-full bg-amber-300 px-7 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-black transition hover:bg-amber-200">
+              Start Application
+            </button>
+            <button className="rounded-full border border-white/30 bg-black/20 px-7 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-100 transition hover:border-amber-300/60 hover:text-amber-100">
+              View Categories
+            </button>
           </div>
 
-          <div className="hidden h-full min-h-[22rem] lg:block">
-            <div className="relative h-full w-full overflow-hidden rounded-[2.2rem] border border-amber-200/20 bg-black/20 backdrop-blur-[2px] shadow-[0_30px_120px_rgba(0,0,0,0.6)]">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_25%,rgba(251,191,36,0.26),transparent_44%),linear-gradient(155deg,rgba(255,255,255,0.08),rgba(0,0,0,0.56))]" />
-              <div className="absolute left-6 right-6 top-6 h-px bg-gradient-to-r from-transparent via-amber-200/45 to-transparent" />
-              <div className="absolute bottom-8 left-8 right-8 rounded-2xl border border-white/10 bg-black/35 p-5">
-                <p className="text-[10px] uppercase tracking-[0.32em] text-amber-200/85">Cinematic Portfolio</p>
-                <p className="mt-3 text-sm leading-relaxed text-zinc-200/85">
-                  Crafted for premium casting calls, editorial campaigns, and runway-first discovery.
-                </p>
+          <div className="mt-12 grid w-full max-w-4xl grid-cols-1 border-y border-white/15 py-6 sm:grid-cols-3">
+            {stats.map((item, idx) => (
+              <div key={item.label} className={`px-4 ${idx < stats.length - 1 ? 'sm:border-r sm:border-white/10' : ''}`}>
+                <p className="text-[10px] uppercase tracking-[0.28em] text-amber-200/90">{item.label}</p>
+                <p className="mt-2 text-sm text-zinc-200">{item.value}</p>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </header>
 
-      <section className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-4 py-14 sm:grid-cols-2 sm:px-6 lg:grid-cols-5 lg:px-10">
-        {stats.map((item) => (
-          <InfoCard key={item.title} {...item} />
-        ))}
-      </section>
+      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+        <div className="mb-10 text-center">
+          <p className="text-[11px] uppercase tracking-[0.35em] text-amber-300/90">Categories</p>
+          <h2 className="mt-4 text-3xl font-semibold tracking-[0.1em] text-zinc-100 sm:text-4xl">Competition Tracks</h2>
+        </div>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-10">
-        <SectionTitle
-          eyebrow="Categories"
-          title="Luxury Talent Categories"
-          subtitle="Curated pathways designed for the next generation of runway icons, editorial stars, and digital fashion personalities."
-        />
-        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {categories.map((category, index) => (
-            <CategoryCard key={category} category={category} index={index} />
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {categories.map((category) => (
+            <article key={category} className="rounded-lg border border-white/12 bg-zinc-950/70 px-5 py-5 transition hover:border-amber-300/50">
+              <p className="text-xs uppercase tracking-[0.18em] text-zinc-200">{category}</p>
+            </article>
           ))}
         </div>
       </section>
 
-      <section className="relative overflow-hidden px-4 py-20 sm:px-6 lg:px-10">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-zinc-950 via-black to-zinc-950" />
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_85%_15%,rgba(251,191,36,0.12),transparent_28%)]" />
-
-        <div className="mx-auto max-w-3xl rounded-3xl border border-amber-300/20 bg-white/[0.03] p-7 shadow-[0_0_0_1px_rgba(251,191,36,0.12),0_20px_80px_rgba(0,0,0,0.65)] backdrop-blur-xl sm:p-10">
-          <SectionTitle
-            eyebrow="Apply Now"
-            title="Begin Your Elite Journey"
-            subtitle="Complete your profile to be shortlisted for jury review and premium city auditions."
-          />
+      <section className="border-t border-white/10 px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl">
+          <div className="text-center">
+            <p className="text-[11px] uppercase tracking-[0.35em] text-amber-300/90">Apply</p>
+            <h2 className="mt-4 text-3xl font-semibold tracking-[0.1em] text-zinc-100 sm:text-4xl">Begin Your Entry</h2>
+            <p className="mt-4 text-sm text-zinc-400">Submit your details to be considered for jury review and audition rounds.</p>
+          </div>
 
           <form onSubmit={handleSubmit} className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
             {formFields.map((field) => (
@@ -222,13 +161,13 @@ function App() {
                 name={field.name}
                 placeholder={field.placeholder}
                 onChange={handleChange}
-                className="w-full rounded-xl border border-zinc-700/80 bg-black/70 px-4 py-3 text-sm text-zinc-100 outline-none transition placeholder:text-zinc-500 focus:border-amber-300/80 focus:ring-2 focus:ring-amber-300/20"
+                className="w-full rounded-md border border-zinc-700 bg-black/65 px-4 py-3 text-sm text-zinc-100 outline-none transition placeholder:text-zinc-500 focus:border-amber-300/80"
               />
             ))}
 
             <button
               type="submit"
-              className="mt-2 w-full rounded-full bg-gradient-to-r from-amber-300 to-amber-500 py-3 text-xs font-bold uppercase tracking-[0.2em] text-black transition hover:from-amber-200 hover:to-amber-400 sm:col-span-2"
+              className="sm:col-span-2 mt-2 w-full rounded-full bg-amber-300 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-black transition hover:bg-amber-200"
             >
               Submit Application
             </button>
