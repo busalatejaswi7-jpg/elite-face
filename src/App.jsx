@@ -134,11 +134,21 @@ function App() {
         ) : null}
       </nav>
 
-      <header className="relative isolate overflow-hidden" style={{ backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/75 to-black" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_25%,rgba(251,191,36,0.22),transparent_35%),linear-gradient(120deg,rgba(0,0,0,0.35),rgba(0,0,0,0.85))]" />
+      <header
+        className="relative isolate overflow-hidden"
+        style={{
+          backgroundImage: `url(${bg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: '58% center',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-black/58 via-black/62 to-black/82" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_20%,rgba(251,191,36,0.24),transparent_36%),radial-gradient(circle_at_82%_42%,rgba(251,191,36,0.24),transparent_42%),linear-gradient(115deg,rgba(0,0,0,0.28),rgba(0,0,0,0.72))]" />
+        <div className="absolute right-[-8%] top-[10%] h-[34rem] w-[34rem] rounded-full bg-amber-300/12 blur-[130px]" />
+        <div className="absolute right-[8%] bottom-[-20%] h-[24rem] w-[24rem] rounded-full bg-amber-100/10 blur-[120px]" />
+        <div className="absolute inset-y-0 right-0 w-[42%] bg-gradient-to-l from-amber-300/8 via-transparent to-transparent" />
 
-        <div className="relative mx-auto flex min-h-[90vh] w-full max-w-7xl items-center px-4 py-20 sm:px-6 lg:px-10">
+        <div className="relative mx-auto grid min-h-[90vh] w-full max-w-7xl items-center gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 lg:px-10">
           <div className="max-w-3xl">
             <p className="animate-fade-up text-[11px] uppercase tracking-[0.5em] text-amber-300">Luxury Casting Platform</p>
             <h1 className="mt-6 animate-fade-up text-5xl font-semibold leading-[0.95] tracking-[0.14em] text-amber-100 drop-shadow-[0_0_24px_rgba(251,191,36,0.35)] sm:text-7xl md:text-8xl">
@@ -156,6 +166,19 @@ function App() {
               <button className="rounded-full border border-white/35 bg-white/5 px-8 py-3 text-xs font-bold uppercase tracking-[0.2em] text-zinc-100 backdrop-blur-sm transition hover:border-amber-300/70 hover:bg-amber-300/10">
                 Explore Finalists
               </button>
+            </div>
+          </div>
+
+          <div className="hidden h-full min-h-[22rem] lg:block">
+            <div className="relative h-full w-full overflow-hidden rounded-[2.2rem] border border-amber-200/20 bg-black/20 backdrop-blur-[2px] shadow-[0_30px_120px_rgba(0,0,0,0.6)]">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_25%,rgba(251,191,36,0.26),transparent_44%),linear-gradient(155deg,rgba(255,255,255,0.08),rgba(0,0,0,0.56))]" />
+              <div className="absolute left-6 right-6 top-6 h-px bg-gradient-to-r from-transparent via-amber-200/45 to-transparent" />
+              <div className="absolute bottom-8 left-8 right-8 rounded-2xl border border-white/10 bg-black/35 p-5">
+                <p className="text-[10px] uppercase tracking-[0.32em] text-amber-200/85">Cinematic Portfolio</p>
+                <p className="mt-3 text-sm leading-relaxed text-zinc-200/85">
+                  Crafted for premium casting calls, editorial campaigns, and runway-first discovery.
+                </p>
+              </div>
             </div>
           </div>
         </div>
