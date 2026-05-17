@@ -1,6 +1,18 @@
 import { useEffect, useState } from 'react';
 import bg from './assets/bg.jpg';
+import maleModel from './assets/hero/male-model.jpg';
+import femaleModel from './assets/hero/female-model.jpg';
 
+import gallery1 from './assets/gallery/gallery1.jpg';
+import gallery2 from './assets/gallery/gallery2.jpg';
+import gallery3 from './assets/gallery/gallery3.jpg';
+import gallery4 from './assets/gallery/gallery4.jpg';
+import gallery5 from './assets/gallery/gallery5.jpg';
+import gallery6 from './assets/gallery/gallery6.jpg';
+
+import client1 from './assets/testimonials/client1.jpg';
+import client2 from './assets/testimonials/client2.jpg';
+import client3 from './assets/testimonials/client3.jpg';
 const navItems = [
   { label: 'Home', href: '#home' },
   { label: 'Portfolio', href: '#gallery' },
@@ -26,12 +38,12 @@ const categories = [
 ];
 
 const gallery = [
-  'https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1400&q=80',
-  'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1400&q=80',
-  'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1400&q=80',
-  'https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?auto=format&fit=crop&w=1400&q=80',
-  'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1400&q=80',
-  'https://images.unsplash.com/photo-1464863979621-258859e62245?auto=format&fit=crop&w=1400&q=80',
+  gallery1,
+  gallery2,
+  gallery3,
+  gallery4,
+  gallery5,
+  gallery6,
 ];
 
 const testimonials = [
@@ -40,8 +52,7 @@ const testimonials = [
     role: 'Runway Talent, Lakmé Fashion Week',
     quote:
       'Elite Face translated my ramp presence into couture campaign opportunities with an editorial finish that global clients immediately recognized.',
-    image:
-      'https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=800&q=80',
+    image: client1,
   },
   {
     name: 'Arjun Mehra',
@@ -49,7 +60,7 @@ const testimonials = [
     quote:
       'Their casting quality is exceptional—every profile arrived polished, camera-ready, and aligned with luxury brand storytelling from day one.',
     image:
-      'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80',
+      client2
   },
   {
     name: 'Meher Sethi',
@@ -57,7 +68,7 @@ const testimonials = [
     quote:
       'From beauty close-ups to couture edits, the agency consistently delivered high-fashion talent that elevated the full visual narrative.',
     image:
-      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80',
+     client3
   },
 ];
 
@@ -241,13 +252,17 @@ function App() {
           <div className="relative mx-auto grid min-h-[92vh] max-w-7xl gap-8 px-5 py-12 sm:gap-10 sm:px-8 sm:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div className="relative flex min-h-[440px] items-center justify-center overflow-hidden rounded-[32px] border border-[#D4AF37]/25 bg-black/55 px-5 py-12 shadow-[0_40px_80px_rgba(0,0,0,0.75)] backdrop-blur-xl sm:min-h-[520px] sm:px-8">
               <img
-                src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=80"
+
+
+                src={maleModel}
                 alt="male runway model"
                 className="absolute left-0 top-0 h-full w-[36%] object-cover object-top opacity-65 sm:w-[33%]"
               />
 
               <img
-                src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1000&q=80"
+
+                src={femaleModel}
+
                 alt="female editorial model"
                 className="absolute right-0 top-0 h-full w-[36%] object-cover object-top opacity-65 sm:w-[33%]"
               />
