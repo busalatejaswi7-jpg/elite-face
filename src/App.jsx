@@ -26,12 +26,12 @@ const categories = [
 ];
 
 const gallery = [
-  'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1800&q=90',
-  'https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=1800&q=90',
-  'https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=1600&q=90',
-  'https://images.unsplash.com/photo-1618375531912-867984bdfd87?auto=format&fit=crop&w=1600&q=90',
-  'https://images.unsplash.com/photo-1614252369475-531eba835eb1?auto=format&fit=crop&w=1600&q=90',
-  'https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=1600&q=90',
+  'https://images.pexels.com/photos/29175956/pexels-photo-29175956.jpeg?auto=compress&cs=tinysrgb&w=1800&h=2400&dpr=1',
+  'https://images.pexels.com/photos/29595740/pexels-photo-29595740.jpeg?auto=compress&cs=tinysrgb&w=1800&h=2400&dpr=1',
+  'https://images.pexels.com/photos/30762479/pexels-photo-30762479.jpeg?auto=compress&cs=tinysrgb&w=1800&h=2400&dpr=1',
+  'https://images.pexels.com/photos/30687193/pexels-photo-30687193.jpeg?auto=compress&cs=tinysrgb&w=1800&h=2400&dpr=1',
+  'https://images.pexels.com/photos/31031725/pexels-photo-31031725.jpeg?auto=compress&cs=tinysrgb&w=1800&h=2400&dpr=1',
+  'https://images.pexels.com/photos/29660214/pexels-photo-29660214.jpeg?auto=compress&cs=tinysrgb&w=1800&h=2400&dpr=1',
 ];
 
 const testimonials = [
@@ -41,7 +41,7 @@ const testimonials = [
     quote:
       'Elite Face translated my ramp presence into couture campaign opportunities with an editorial finish that global clients immediately recognized.',
     image:
-      'https://images.unsplash.com/photo-1609709295948-17d77cb2a69b?auto=format&fit=crop&w=600&q=90',
+      'https://images.pexels.com/photos/29515740/pexels-photo-29515740.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1',
   },
   {
     name: 'Arjun Mehra',
@@ -49,7 +49,7 @@ const testimonials = [
     quote:
       'Their casting quality is exceptional—every profile arrived polished, camera-ready, and aligned with luxury brand storytelling from day one.',
     image:
-      'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=600&q=90',
+      'https://images.pexels.com/photos/30690116/pexels-photo-30690116.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1',
   },
   {
     name: 'Meher Sethi',
@@ -57,7 +57,7 @@ const testimonials = [
     quote:
       'From beauty close-ups to couture edits, the agency consistently delivered high-fashion talent that elevated the full visual narrative.',
     image:
-      'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=90',
+      'https://images.pexels.com/photos/30415822/pexels-photo-30415822.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1',
   },
 ];
 
