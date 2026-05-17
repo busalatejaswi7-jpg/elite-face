@@ -11,9 +11,9 @@ const navItems = [
 
 const showcaseStats = [
   { value: '250+', label: 'Models Signed' },
-  { value: '82', label: 'Global Events' },
   { value: '48', label: 'Partner Brands' },
-  { value: '29', label: 'Industry Awards' },
+  { value: '82', label: 'Global Events' },
+  { value: '29', label: 'Fashion Awards' },
 ];
 
 const categories = [
@@ -26,38 +26,38 @@ const categories = [
 ];
 
 const gallery = [
-  'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1632149877166-f75d49000351?auto=format&fit=crop&w=1400&q=80',
+  'https://images.unsplash.com/photo-1464863979621-258859e62245?auto=format&fit=crop&w=1400&q=80',
   'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1464863979621-258859e62245?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1551232864-3f0890e580d9?auto=format&fit=crop&w=1200&q=80',
   'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80',
 ];
 
 const testimonials = [
   {
-    name: 'Anaya Roy',
-    role: 'Vogue Featured Model',
+    name: 'Elena Moritz',
+    role: 'Runway Talent, Milan Circuit',
     quote:
-      'Elite Face gave me cinematic brand positioning and direct access to world-class runway opportunities.',
+      'Elite Face positioned my portfolio with cinematic precision and connected me with couture houses that value craft.',
     image:
-      'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80',
+      'https://images.unsplash.com/photo-1542206395-9feb3edaa68d?auto=format&fit=crop&w=300&q=80',
   },
   {
-    name: 'Mira Fernandes',
-    role: 'Creative Director, House of Aurelia',
+    name: 'Daniel Laurent',
+    role: 'Brand Partnerships Lead, Maison Aurelle',
     quote:
-      'The presentation quality and professionalism are unmatched.',
+      'From casting to show-day execution, the team delivers a luxury-standard experience that translates on every runway.',
     image:
-      'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=200&q=80',
+      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80',
   },
   {
-    name: 'Riya Kapoor',
-    role: 'National Winner — Season 1',
+    name: 'Safiya Khan',
+    role: 'Editorial Model, Dubai Fashion Week',
     quote:
-      'Every touchpoint feels like an international agency.',
+      'Their direction elevated my presence across international editorials and made every campaign feel premium and intentional.',
     image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80',
+      'https://images.unsplash.com/photo-1541823709867-1b206113eafd?auto=format&fit=crop&w=300&q=80',
   },
 ];
 
@@ -176,7 +176,6 @@ function App() {
       <div className="min-h-screen bg-black text-zinc-100">
         <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_15%_20%,rgba(251,191,36,0.22),transparent_42%),radial-gradient(circle_at_90%_75%,rgba(245,158,11,0.17),transparent_40%),linear-gradient(180deg,#030303_0%,#050505_50%,#020202_100%)]" />
 
-        {/* NAVBAR */}
         <nav className="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-3xl">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-8">
             <BrandLogo compact />
@@ -227,7 +226,6 @@ function App() {
           )}
         </nav>
 
-        {/* HERO */}
         <header
           id="home"
           className="relative overflow-hidden border-b border-white/10"
@@ -294,7 +292,7 @@ function App() {
                 <div className="group relative">
                   <img
                     src={gallery[0]}
-                    alt="featured model"
+                    alt="featured runway model"
                     className="h-52 w-full object-cover object-top transition duration-700 group-hover:scale-[1.14] sm:h-64"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -307,99 +305,81 @@ function App() {
                   <p className="text-right text-xl font-semibold text-amber-200">96%</p>
                 </div>
               </article>
-
-              <div className="grid grid-cols-2 gap-4 sm:gap-5">
-                {showcaseStats.slice(0, 2).map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="rounded-2xl border border-[#D4AF37]/25 bg-white/[0.06] p-5 backdrop-blur-xl"
-                  >
-                    <p className="text-2xl font-semibold text-amber-200">{stat.value}</p>
-                    <p className="mt-1 text-[11px] uppercase tracking-[0.2em] text-zinc-300">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </header>
 
-        {/* STATS */}
         <section className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-4 py-16 sm:grid-cols-4 sm:px-8 sm:py-20">
           {showcaseStats.map((stat) => (
             <div
               key={stat.label}
               className="rounded-2xl border border-[#D4AF37]/20 bg-white/5 p-6 shadow-2xl backdrop-blur-lg"
             >
-              <p className="text-2xl sm:text-3xl font-semibold text-amber-200">
+              <p className="text-2xl font-semibold text-amber-200 sm:text-3xl">
                 {stat.value}
               </p>
 
-              <p className="mt-2 text-[10px] sm:text-xs uppercase tracking-[0.22em] text-zinc-300">
+              <p className="mt-2 text-[10px] uppercase tracking-[0.22em] text-zinc-300 sm:text-xs">
                 {stat.label}
               </p>
             </div>
           ))}
         </section>
-{/* FEATURES / BADGES */}
-<section className="mx-auto max-w-7xl px-4 py-10 sm:px-8 sm:py-14">
 
-  <div className="mb-8 text-center">
-    <p className="text-xs uppercase tracking-[0.4em] text-amber-300">
-      Event Highlights
-    </p>
+        <section className="mx-auto max-w-7xl px-4 py-10 sm:px-8 sm:py-14">
+          <div className="mb-8 text-center">
+            <p className="text-xs uppercase tracking-[0.4em] text-amber-300">
+              Event Highlights
+            </p>
 
-    <h3 className="mt-3 text-2xl font-semibold text-white sm:text-4xl">
-      Elite Fashion Experience
-    </h3>
-  </div>
+            <h3 className="mt-3 text-2xl font-semibold text-white sm:text-4xl">
+              Elite Fashion Experience
+            </h3>
+          </div>
 
-  <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-4">
+            {[
+              {
+                title: 'Open for All',
+                desc: 'Boys & Girls',
+                icon: '✦',
+              },
+              {
+                title: 'Age Group',
+                desc: '16 - 28 Years',
+                icon: '◈',
+              },
+              {
+                title: 'Luxury Rewards',
+                desc: 'Brand Campaigns',
+                icon: '✧',
+              },
+              {
+                title: 'Premium Auditions',
+                desc: 'Industry Jury',
+                icon: '⬡',
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="rounded-2xl border border-[#D4AF37]/25 bg-gradient-to-b from-zinc-900/70 to-black/80 p-5 shadow-[0_0_0_1px_rgba(212,175,55,0.08)] backdrop-blur-xl"
+              >
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full border border-[#D4AF37]/30 text-lg text-amber-300">
+                  {item.icon}
+                </div>
 
-    {[
-      {
-        title: 'Open for All',
-        desc: 'Boys & Girls',
-        icon: '✦',
-      },
-      {
-        title: 'Age Group',
-        desc: '16 - 28 Years',
-        icon: '◈',
-      },
-      {
-        title: 'Luxury Rewards',
-        desc: 'Brand Campaigns',
-        icon: '✧',
-      },
-      {
-        title: 'Premium Auditions',
-        desc: 'Industry Jury',
-        icon: '⬡',
-      },
-    ].map((item) => (
+                <h4 className="text-sm font-medium uppercase tracking-[0.12em] text-white">
+                  {item.title}
+                </h4>
 
-      <div
-        key={item.title}
-        className="rounded-2xl border border-[#D4AF37]/25 bg-gradient-to-b from-zinc-900/70 to-black/80 p-5 shadow-[0_0_0_1px_rgba(212,175,55,0.08)] backdrop-blur-xl"
-      >
+                <p className="mt-2 text-xs leading-relaxed text-zinc-400">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
 
-        <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full border border-[#D4AF37]/30 text-lg text-amber-300">
-          {item.icon}
-        </div>
-
-        <h4 className="text-sm font-medium uppercase tracking-[0.12em] text-white">
-          {item.title}
-        </h4>
-
-        <p className="mt-2 text-xs leading-relaxed text-zinc-400">
-          {item.desc}
-        </p>
-
-      </div>
-    ))}
-  </div>
-</section>
-        {/* GALLERY */}
         <section
           id="gallery"
           className="mx-auto max-w-7xl px-4 py-12 sm:px-8 sm:py-20"
@@ -410,7 +390,7 @@ function App() {
                 Portfolio Gallery
               </p>
 
-              <h2 className="mt-3 text-2xl sm:text-4xl font-semibold">
+              <h2 className="mt-3 text-2xl font-semibold sm:text-4xl">
                 Editorial Selection
               </h2>
             </div>
@@ -425,8 +405,8 @@ function App() {
             <article className="group relative overflow-hidden rounded-2xl border border-[#D4AF37]/20 bg-zinc-900/70 lg:col-span-7">
               <img
                 src={gallery[1]}
-                alt="fashion model featured"
-                className="h-[350px] sm:h-[430px] w-full object-cover transition duration-700 group-hover:scale-[1.14]"
+                alt="fashion week runway model"
+                className="h-[350px] w-full object-cover transition duration-700 group-hover:scale-[1.14] sm:h-[430px]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/10" />
             </article>
@@ -439,7 +419,7 @@ function App() {
                 >
                   <img
                     src={img}
-                    alt={`fashion model side ${i + 1}`}
+                    alt={`couture editorial look ${i + 1}`}
                     className="h-[200px] w-full object-cover transition duration-700 group-hover:scale-[1.14] sm:h-[220px]"
                   />
                 </article>
@@ -448,7 +428,6 @@ function App() {
           </div>
         </section>
 
-        {/* CATEGORIES */}
         <section
           id="categories"
           className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-8 sm:py-20 lg:grid-cols-[0.95fr_1.05fr]"
@@ -458,7 +437,7 @@ function App() {
               Specialty Verticals
             </p>
 
-            <h3 className="mt-3 text-2xl sm:text-4xl font-semibold">
+            <h3 className="mt-3 text-2xl font-semibold sm:text-4xl">
               Distinct Talent Lanes
             </h3>
 
@@ -474,7 +453,7 @@ function App() {
                 key={category}
                 className="rounded-2xl border border-[#D4AF37]/60 bg-gradient-to-b from-zinc-900/90 to-zinc-950 p-5 transition duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(212,175,55,0.2)]"
               >
-                <p className="text-xs sm:text-sm uppercase tracking-[0.18em] text-zinc-200">
+                <p className="text-xs uppercase tracking-[0.18em] text-zinc-200 sm:text-sm">
                   {category}
                 </p>
               </div>
@@ -482,13 +461,12 @@ function App() {
           </div>
         </section>
 
-        {/* TESTIMONIALS */}
         <section
           id="testimonials"
           className="border-y border-white/10 bg-white/[0.03] px-4 py-20 sm:px-8"
         >
           <div className="mx-auto max-w-7xl">
-            <h3 className="mb-10 text-center text-2xl sm:text-4xl font-semibold">
+            <h3 className="mb-10 text-center text-2xl font-semibold sm:text-4xl">
               Client & Talent Voices
             </h3>
 
@@ -525,14 +503,13 @@ function App() {
           </div>
         </section>
 
-        {/* APPLY */}
         <section
           id="apply"
           className="mx-auto max-w-7xl px-4 py-20 sm:px-8"
         >
           <div className="grid gap-8 rounded-3xl border border-[#D4AF37]/20 bg-gradient-to-b from-white/8 to-white/[0.03] p-8 shadow-2xl backdrop-blur-lg sm:p-10 lg:grid-cols-2">
             <div>
-              <h3 className="text-2xl sm:text-3xl font-semibold">
+              <h3 className="text-2xl font-semibold sm:text-3xl">
                 Apply for Elite Face 2026
               </h3>
 
@@ -568,7 +545,7 @@ function App() {
 
               <button
                 type="submit"
-                className="sm:col-span-2 mt-2 rounded-full bg-gradient-to-r from-amber-300 to-yellow-200 py-3 text-xs font-bold uppercase tracking-[0.22em] text-black transition hover:opacity-90"
+                className="mt-2 rounded-full bg-gradient-to-r from-amber-300 to-yellow-200 py-3 text-xs font-bold uppercase tracking-[0.22em] text-black transition hover:opacity-90 sm:col-span-2"
               >
                 Submit Application
               </button>
@@ -576,7 +553,6 @@ function App() {
           </div>
         </section>
 
-        {/* FOOTER */}
         <footer className="border-t border-white/10 px-4 py-10 sm:px-8">
           <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 text-xs uppercase tracking-[0.2em] text-zinc-400 sm:flex-row">
             <BrandLogo />
