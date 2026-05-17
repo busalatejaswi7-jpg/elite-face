@@ -26,38 +26,38 @@ const categories = [
 ];
 
 const gallery = [
-  'https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1600&q=85',
-  'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1600&q=85',
-  'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1400&q=85',
-  'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1400&q=85',
-  'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1400&q=85',
-  'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1400&q=85',
+  'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1800&q=90',
+  'https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=1800&q=90',
+  'https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=1600&q=90',
+  'https://images.unsplash.com/photo-1618375531912-867984bdfd87?auto=format&fit=crop&w=1600&q=90',
+  'https://images.unsplash.com/photo-1614252369475-531eba835eb1?auto=format&fit=crop&w=1600&q=90',
+  'https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=1600&q=90',
 ];
 
 const testimonials = [
   {
-    name: 'Elena Moritz',
-    role: 'Runway Talent, Milan Circuit',
+    name: 'Ananya Kapoor',
+    role: 'Runway Talent, Lakmé Fashion Week',
     quote:
-      'Elite Face positioned my portfolio with cinematic precision and connected me with couture houses that value craft.',
+      'Elite Face translated my ramp presence into couture campaign opportunities with an editorial finish that global clients immediately recognized.',
     image:
-      'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=500&q=85',
+      'https://images.unsplash.com/photo-1609709295948-17d77cb2a69b?auto=format&fit=crop&w=600&q=90',
   },
   {
-    name: 'Daniel Laurent',
-    role: 'Brand Partnerships Lead, Maison Aurelle',
+    name: 'Arjun Mehra',
+    role: 'Fashion Director, House of Noor',
     quote:
-      'From casting to show-day execution, the team delivers a luxury-standard experience that translates on every runway.',
+      'Their casting quality is exceptional—every profile arrived polished, camera-ready, and aligned with luxury brand storytelling from day one.',
     image:
-      'https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=500&q=85',
+      'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=600&q=90',
   },
   {
-    name: 'Safiya Khan',
-    role: 'Editorial Model, Dubai Fashion Week',
+    name: 'Meher Sethi',
+    role: 'Beauty Campaign Lead, Aurelia Luxe',
     quote:
-      'Their direction elevated my presence across international editorials and made every campaign feel premium and intentional.',
+      'From beauty close-ups to couture edits, the agency consistently delivered high-fashion talent that elevated the full visual narrative.',
     image:
-      'https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?auto=format&fit=crop&w=500&q=85',
+      'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=90',
   },
 ];
 
