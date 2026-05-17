@@ -26,12 +26,12 @@ const categories = [
 ];
 
 const gallery = [
-  'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1464863979621-258859e62245?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
 ];
 
 const testimonials = [
@@ -177,7 +177,7 @@ function App() {
         <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_15%_20%,rgba(251,191,36,0.22),transparent_42%),radial-gradient(circle_at_90%_75%,rgba(245,158,11,0.17),transparent_40%),linear-gradient(180deg,#030303_0%,#050505_50%,#020202_100%)]" />
 
         {/* NAVBAR */}
-        <nav className="sticky top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-2xl">
+        <nav className="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-3xl">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-8">
             <BrandLogo compact />
 
@@ -213,7 +213,7 @@ function App() {
           </div>
 
           {isMenuOpen && (
-            <div className="space-y-2 border-t border-white/10 bg-black/95 px-4 py-5 backdrop-blur-2xl lg:hidden">
+            <div className="space-y-2 border-t border-white/10 bg-black/95 px-4 py-5 backdrop-blur-3xl transition-all duration-500 ease-out lg:hidden">
               {navItems.map((item) => (
                 <a
                   key={item.label}
@@ -235,113 +235,96 @@ function App() {
           <img
             src={bg}
             alt="fashion hero"
-            className="absolute inset-0 h-full w-full object-cover object-top opacity-35"
+            className="absolute inset-0 h-full w-full object-cover object-top opacity-25"
           />
 
-          <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(0,0,0,.95)_14%,rgba(0,0,0,.74)_45%,rgba(0,0,0,.9)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(0,0,0,.98)_0%,rgba(0,0,0,.86)_45%,rgba(0,0,0,.97)_100%)]" />
 
-          <div className="relative mx-auto grid min-h-[90vh] max-w-7xl gap-6 px-4 py-12 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            
-              
-<div className="relative flex min-h-[420px] items-center justify-center overflow-hidden rounded-[32px] border border-[#D4AF37]/20 bg-black/40 px-4 py-12 backdrop-blur-xl">
+          <div className="relative mx-auto grid min-h-[92vh] max-w-7xl gap-8 px-4 py-12 sm:gap-10 sm:px-8 sm:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div className="relative flex min-h-[440px] items-center justify-center overflow-hidden rounded-[32px] border border-[#D4AF37]/25 bg-black/55 px-5 py-12 shadow-[0_40px_80px_rgba(0,0,0,0.75)] backdrop-blur-xl sm:min-h-[520px] sm:px-8">
+              <img
+                src="https://images.unsplash.com/photo-1618375531912-867984bdfd87?auto=format&fit=crop&w=900&q=80"
+                alt="male runway model"
+                className="absolute left-0 top-0 h-full w-[36%] object-cover object-top opacity-65 sm:w-[33%]"
+              />
 
-  {/* LEFT MODEL */}
-  <img
-    src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80"
-    alt="male model"
-    className="absolute left-0 top-0 h-full w-[32%] object-cover object-top opacity-70"
-  />
+              <img
+                src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80"
+                alt="female editorial model"
+                className="absolute right-0 top-0 h-full w-[36%] object-cover object-top opacity-65 sm:w-[33%]"
+              />
 
-  {/* RIGHT MODEL */}
-  <img
-    src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80"
-    alt="female model"
-    className="absolute right-0 top-0 h-full w-[32%] object-cover object-top opacity-70"
-  />
+              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.95)_0%,rgba(0,0,0,0.2)_30%,rgba(0,0,0,0.2)_70%,rgba(0,0,0,0.95)_100%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(212,175,55,0.2),transparent_50%)]" />
 
-  {/* DARK OVERLAY */}
-  <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-black" />
+              <div className="relative z-10 max-w-[260px] text-center sm:max-w-[360px]">
+                <p className="text-[10px] uppercase tracking-[0.4em] text-amber-300 sm:text-xs">
+                  Luxury Fashion Portfolio
+                </p>
 
-  {/* CENTER CONTENT */}
-  <div className="relative z-10 max-w-[220px] text-center">
+                <h1 className="mt-4 text-2xl font-semibold leading-tight tracking-[0.05em] text-white sm:text-4xl lg:text-6xl xl:text-7xl">
+                  ELITE FACE INDIA
+                </h1>
 
-    <p className="text-[10px] uppercase tracking-[0.45em] text-amber-300">
-      Luxury Fashion Portfolio
-    </p>
+                <p className="mt-4 text-xs leading-relaxed text-zinc-300 sm:text-sm">
+                  Cinematic talent representation for global runway, luxury brands,
+                  and premium editorial campaigns.
+                </p>
 
-    <h1 className="mt-4 text-3xl font-semibold leading-tight tracking-[0.04em] text-white sm:text-5xl lg:text-7xl">
-      ELITE FACE INDIA
-    </h1>
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:justify-center">
+                  <a
+                    href="#apply"
+                    className="rounded-full bg-gradient-to-r from-amber-300 to-yellow-200 px-6 py-3 text-[10px] font-bold uppercase tracking-[0.2em] text-black transition duration-300 hover:scale-[1.03]"
+                  >
+                    Start Application
+                  </a>
 
-    <p className="mt-4 text-xs leading-relaxed text-zinc-300 sm:text-sm">
-      Cinematic talent representation for global runway,
-      luxury brands, and premium editorial campaigns.
-    </p>
+                  <a
+                    href="#gallery"
+                    className="rounded-full border border-[#D4AF37]/30 bg-white/5 px-6 py-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-xl transition duration-300 hover:border-[#D4AF37]/60"
+                  >
+                    View Portfolio
+                  </a>
+                </div>
+              </div>
+            </div>
 
-    <div className="mt-6 flex flex-col gap-3">
-      <a
-        href="#apply"
-        className="rounded-full bg-gradient-to-r from-amber-300 to-yellow-200 px-5 py-3 text-[10px] font-bold uppercase tracking-[0.2em] text-black"
-      >
-        Start Application
-      </a>
-
-      <a
-        href="#gallery"
-        className="rounded-full border border-white/20 bg-white/5 px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-xl"
-      >
-        View Portfolio
-      </a>
-    </div>
-  </div>
-</div>
-
-
-
-
-            <div className="grid gap-6 animate-fade-up lg:pl-6">
-              <article className="overflow-hidden rounded-3xl border border-[#D4AF37]/20 bg-black/45 backdrop-blur-lg">
-                <img
-                  src={gallery[0]}
-                  alt="featured model"
-                  className="h-52 sm:h-64 w-full object-cover object-top"
-                />
+            <div className="grid animate-fade-up gap-5 sm:gap-6 lg:pl-6">
+              <article className="overflow-hidden rounded-3xl border border-[#D4AF37]/25 bg-black/50 backdrop-blur-lg">
+                <div className="group relative">
+                  <img
+                    src={gallery[0]}
+                    alt="featured model"
+                    className="h-52 w-full object-cover object-top transition duration-700 group-hover:scale-[1.14] sm:h-64"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                </div>
 
                 <div className="grid grid-cols-2 gap-0 border-t border-white/10 bg-black/70 p-4">
                   <p className="text-xs uppercase tracking-[0.2em] text-zinc-300">
                     Signature Bookings
                   </p>
-
-                  <p className="text-right text-xl font-semibold text-amber-200">
-                    96%
-                  </p>
+                  <p className="text-right text-xl font-semibold text-amber-200">96%</p>
                 </div>
               </article>
 
-              <div className="grid grid-cols-2 gap-4">
-                {showcaseStats
-                  .slice(0, 2)
-                  .map((stat) => (
-                    <div
-                      key={stat.label}
-                      className="rounded-2xl border border-[#D4AF37]/20 bg-white/[0.06] p-5 backdrop-blur-xl"
-                    >
-                      <p className="text-2xl font-semibold text-amber-200">
-                        {stat.value}
-                      </p>
-
-                      <p className="mt-1 text-[11px] uppercase tracking-[0.2em] text-zinc-300">
-                        {stat.label}
-                      </p>
-                    </div>
-                  ))}
+              <div className="grid grid-cols-2 gap-4 sm:gap-5">
+                {showcaseStats.slice(0, 2).map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="rounded-2xl border border-[#D4AF37]/25 bg-white/[0.06] p-5 backdrop-blur-xl"
+                  >
+                    <p className="text-2xl font-semibold text-amber-200">{stat.value}</p>
+                    <p className="mt-1 text-[11px] uppercase tracking-[0.2em] text-zinc-300">{stat.label}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </header>
 
         {/* STATS */}
-        <section className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-4 py-14 sm:grid-cols-4 sm:px-8">
+        <section className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-4 py-16 sm:grid-cols-4 sm:px-8 sm:py-20">
           {showcaseStats.map((stat) => (
             <div
               key={stat.label}
@@ -358,7 +341,7 @@ function App() {
           ))}
         </section>
 {/* FEATURES / BADGES */}
-<section className="mx-auto max-w-7xl px-4 py-6 sm:px-8">
+<section className="mx-auto max-w-7xl px-4 py-10 sm:px-8 sm:py-14">
 
   <div className="mb-8 text-center">
     <p className="text-xs uppercase tracking-[0.4em] text-amber-300">
@@ -397,7 +380,7 @@ function App() {
 
       <div
         key={item.title}
-        className="rounded-2xl border border-[#D4AF37]/20 bg-gradient-to-b from-zinc-900/90 to-black p-5 backdrop-blur-xl"
+        className="rounded-2xl border border-[#D4AF37]/25 bg-gradient-to-b from-zinc-900/70 to-black/80 p-5 shadow-[0_0_0_1px_rgba(212,175,55,0.08)] backdrop-blur-xl"
       >
 
         <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full border border-[#D4AF37]/30 text-lg text-amber-300">
@@ -419,7 +402,7 @@ function App() {
         {/* GALLERY */}
         <section
           id="gallery"
-          className="mx-auto max-w-7xl px-4 py-10 sm:px-8 sm:py-16"
+          className="mx-auto max-w-7xl px-4 py-12 sm:px-8 sm:py-20"
         >
           <div className="mb-10 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div>
@@ -443,8 +426,9 @@ function App() {
               <img
                 src={gallery[1]}
                 alt="fashion model featured"
-                className="h-[350px] sm:h-[430px] w-full object-cover transition duration-700 group-hover:scale-105"
+                className="h-[350px] sm:h-[430px] w-full object-cover transition duration-700 group-hover:scale-[1.14]"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/10" />
             </article>
 
             <div className="grid gap-6 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1">
@@ -456,7 +440,7 @@ function App() {
                   <img
                     src={img}
                     alt={`fashion model side ${i + 1}`}
-                    className="h-[220px] w-full object-cover transition duration-700 group-hover:scale-110"
+                    className="h-[200px] w-full object-cover transition duration-700 group-hover:scale-[1.14] sm:h-[220px]"
                   />
                 </article>
               ))}
@@ -467,7 +451,7 @@ function App() {
         {/* CATEGORIES */}
         <section
           id="categories"
-          className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-8 lg:grid-cols-[0.95fr_1.05fr]"
+          className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-8 sm:py-20 lg:grid-cols-[0.95fr_1.05fr]"
         >
           <div>
             <p className="text-xs uppercase tracking-[0.35em] text-amber-300">
@@ -484,11 +468,11 @@ function App() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-2">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
             {categories.map((category) => (
               <div
                 key={category}
-                className="rounded-2xl border border-[#D4AF37]/20 bg-gradient-to-b from-zinc-900/90 to-zinc-950 p-5 transition hover:border-[#D4AF37]/60"
+                className="rounded-2xl border border-[#D4AF37]/60 bg-gradient-to-b from-zinc-900/90 to-zinc-950 p-5 transition duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(212,175,55,0.2)]"
               >
                 <p className="text-xs sm:text-sm uppercase tracking-[0.18em] text-zinc-200">
                   {category}
