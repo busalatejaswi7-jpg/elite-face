@@ -26,12 +26,12 @@ const categories = [
 ];
 
 const gallery = [
-  'https://source.unsplash.com/1800x2400/?Indian%20runway%20model%20editorial%2Cfashion%20week&sig=101',
-  'https://source.unsplash.com/1800x2400/?Vogue%20India%20fashion%2Ceditorial&sig=102',
-  'https://source.unsplash.com/1800x2400/?Lakme%20Fashion%20Week%20runway%2Chigh%20fashion&sig=103',
-  'https://source.unsplash.com/1800x2400/?Indian%20couture%20model%2Cdramatic%20lighting&sig=104',
-  'https://source.unsplash.com/1800x2400/?luxury%20Indian%20fashion%20photography%2Ceditorial&sig=105',
-  'https://source.unsplash.com/1800x2400/?high%20fashion%20runway%20India%2Ccouture%20campaign&sig=106',
+  'https://images.pexels.com/photos/16170/pexels-photo.jpg',
+  'https://images.pexels.com/photos/1755385/pexels-photo-1755385.jpeg',
+  'https://images.pexels.com/photos/2531554/pexels-photo-2531554.jpeg',
+  'https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg',
+  'https://images.pexels.com/photos/2703202/pexels-photo-2703202.jpeg',
+  'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg',
 ];
 
 const testimonials = [
@@ -41,7 +41,7 @@ const testimonials = [
     quote:
       'Elite Face translated my ramp presence into couture campaign opportunities with an editorial finish that global clients immediately recognized.',
     image:
-      'https://source.unsplash.com/800x800/?editorial%20fashion%20portrait%20Indian%20woman%2Cstudio&sig=201',
+      'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg',
   },
   {
     name: 'Arjun Mehra',
@@ -49,7 +49,7 @@ const testimonials = [
     quote:
       'Their casting quality is exceptional—every profile arrived polished, camera-ready, and aligned with luxury brand storytelling from day one.',
     image:
-      'https://source.unsplash.com/800x800/?editorial%20fashion%20portrait%20Indian%20man%2Cluxury&sig=202',
+      'https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg',
   },
   {
     name: 'Meher Sethi',
@@ -57,7 +57,7 @@ const testimonials = [
     quote:
       'From beauty close-ups to couture edits, the agency consistently delivered high-fashion talent that elevated the full visual narrative.',
     image:
-      'https://source.unsplash.com/800x800/?Indian%20couture%20beauty%20portrait%2Cvogue%20style&sig=203',
+      'https://images.pexels.com/photos/1468379/pexels-photo-1468379.jpeg',
   },
 ];
 
@@ -241,13 +241,13 @@ function App() {
           <div className="relative mx-auto grid min-h-[92vh] max-w-7xl gap-8 px-5 py-12 sm:gap-10 sm:px-8 sm:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div className="relative flex min-h-[440px] items-center justify-center overflow-hidden rounded-[32px] border border-[#D4AF37]/25 bg-black/55 px-5 py-12 shadow-[0_40px_80px_rgba(0,0,0,0.75)] backdrop-blur-xl sm:min-h-[520px] sm:px-8">
               <img
-                src="https://source.unsplash.com/900x1400/?Indian%20male%20runway%20model%2Ceditorial&sig=301"
+                src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg"
                 alt="male runway model"
                 className="absolute left-0 top-0 h-full w-[36%] object-cover object-top opacity-65 sm:w-[33%]"
               />
 
               <img
-                src="https://source.unsplash.com/900x1400/?Indian%20female%20runway%20model%2Cluxury%20editorial&sig=302"
+                src="https://images.pexels.com/photos/458766/pexels-photo-458766.jpeg"
                 alt="female editorial model"
                 className="absolute right-0 top-0 h-full w-[36%] object-cover object-top opacity-65 sm:w-[33%]"
               />
