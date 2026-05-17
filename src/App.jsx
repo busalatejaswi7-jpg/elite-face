@@ -26,12 +26,12 @@ const categories = [
 ];
 
 const gallery = [
-  'https://images.pexels.com/photos/29175956/pexels-photo-29175956.jpeg?auto=compress&cs=tinysrgb&w=1800&h=2400&dpr=1',
-  'https://images.pexels.com/photos/29595740/pexels-photo-29595740.jpeg?auto=compress&cs=tinysrgb&w=1800&h=2400&dpr=1',
-  'https://images.pexels.com/photos/30762479/pexels-photo-30762479.jpeg?auto=compress&cs=tinysrgb&w=1800&h=2400&dpr=1',
-  'https://images.pexels.com/photos/30687193/pexels-photo-30687193.jpeg?auto=compress&cs=tinysrgb&w=1800&h=2400&dpr=1',
-  'https://images.pexels.com/photos/31031725/pexels-photo-31031725.jpeg?auto=compress&cs=tinysrgb&w=1800&h=2400&dpr=1',
-  'https://images.pexels.com/photos/29660214/pexels-photo-29660214.jpeg?auto=compress&cs=tinysrgb&w=1800&h=2400&dpr=1',
+  'https://source.unsplash.com/1800x2400/?Indian%20runway%20model%20editorial%2Cfashion%20week&sig=101',
+  'https://source.unsplash.com/1800x2400/?Vogue%20India%20fashion%2Ceditorial&sig=102',
+  'https://source.unsplash.com/1800x2400/?Lakme%20Fashion%20Week%20runway%2Chigh%20fashion&sig=103',
+  'https://source.unsplash.com/1800x2400/?Indian%20couture%20model%2Cdramatic%20lighting&sig=104',
+  'https://source.unsplash.com/1800x2400/?luxury%20Indian%20fashion%20photography%2Ceditorial&sig=105',
+  'https://source.unsplash.com/1800x2400/?high%20fashion%20runway%20India%2Ccouture%20campaign&sig=106',
 ];
 
 const testimonials = [
@@ -41,7 +41,7 @@ const testimonials = [
     quote:
       'Elite Face translated my ramp presence into couture campaign opportunities with an editorial finish that global clients immediately recognized.',
     image:
-      'https://images.pexels.com/photos/29515740/pexels-photo-29515740.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1',
+      'https://source.unsplash.com/800x800/?editorial%20fashion%20portrait%20Indian%20woman%2Cstudio&sig=201',
   },
   {
     name: 'Arjun Mehra',
@@ -49,7 +49,7 @@ const testimonials = [
     quote:
       'Their casting quality is exceptional—every profile arrived polished, camera-ready, and aligned with luxury brand storytelling from day one.',
     image:
-      'https://images.pexels.com/photos/30690116/pexels-photo-30690116.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1',
+      'https://source.unsplash.com/800x800/?editorial%20fashion%20portrait%20Indian%20man%2Cluxury&sig=202',
   },
   {
     name: 'Meher Sethi',
@@ -57,7 +57,7 @@ const testimonials = [
     quote:
       'From beauty close-ups to couture edits, the agency consistently delivered high-fashion talent that elevated the full visual narrative.',
     image:
-      'https://images.pexels.com/photos/30415822/pexels-photo-30415822.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1',
+      'https://source.unsplash.com/800x800/?Indian%20couture%20beauty%20portrait%2Cvogue%20style&sig=203',
   },
 ];
 
@@ -241,13 +241,13 @@ function App() {
           <div className="relative mx-auto grid min-h-[92vh] max-w-7xl gap-8 px-5 py-12 sm:gap-10 sm:px-8 sm:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div className="relative flex min-h-[440px] items-center justify-center overflow-hidden rounded-[32px] border border-[#D4AF37]/25 bg-black/55 px-5 py-12 shadow-[0_40px_80px_rgba(0,0,0,0.75)] backdrop-blur-xl sm:min-h-[520px] sm:px-8">
               <img
-                src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=85"
+                src="https://source.unsplash.com/900x1400/?Indian%20male%20runway%20model%2Ceditorial&sig=301"
                 alt="male runway model"
                 className="absolute left-0 top-0 h-full w-[36%] object-cover object-top opacity-65 sm:w-[33%]"
               />
 
               <img
-                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=85"
+                src="https://source.unsplash.com/900x1400/?Indian%20female%20runway%20model%2Cluxury%20editorial&sig=302"
                 alt="female editorial model"
                 className="absolute right-0 top-0 h-full w-[36%] object-cover object-top opacity-65 sm:w-[33%]"
               />
