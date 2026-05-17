@@ -26,12 +26,12 @@ const categories = [
 ];
 
 const gallery = [
-  'https://images.unsplash.com/photo-1632149877166-f75d49000351?auto=format&fit=crop&w=1400&q=80',
-  'https://images.unsplash.com/photo-1464863979621-258859e62245?auto=format&fit=crop&w=1400&q=80',
-  'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1551232864-3f0890e580d9?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1603217192634-61068e4d4bf9?auto=format&fit=crop&w=1400&q=80',
+  'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1400&q=80',
+  'https://images.unsplash.com/photo-1542295669297-4d352b042bca?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=80',
   'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80',
 ];
 
 const testimonials = [
@@ -41,7 +41,7 @@ const testimonials = [
     quote:
       'Elite Face positioned my portfolio with cinematic precision and connected me with couture houses that value craft.',
     image:
-      'https://images.unsplash.com/photo-1542206395-9feb3edaa68d?auto=format&fit=crop&w=300&q=80',
+      'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=300&q=80',
   },
   {
     name: 'Daniel Laurent',
@@ -49,7 +49,7 @@ const testimonials = [
     quote:
       'From casting to show-day execution, the team delivers a luxury-standard experience that translates on every runway.',
     image:
-      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80',
+      'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80',
   },
   {
     name: 'Safiya Khan',
@@ -57,7 +57,7 @@ const testimonials = [
     quote:
       'Their direction elevated my presence across international editorials and made every campaign feel premium and intentional.',
     image:
-      'https://images.unsplash.com/photo-1541823709867-1b206113eafd?auto=format&fit=crop&w=300&q=80',
+      'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=300&q=80',
   },
 ];
 
@@ -173,11 +173,11 @@ function App() {
         </div>
       )}
 
-      <div className="min-h-screen bg-black text-zinc-100">
+      <div className="min-h-screen overflow-x-clip bg-black text-zinc-100">
         <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_15%_20%,rgba(251,191,36,0.22),transparent_42%),radial-gradient(circle_at_90%_75%,rgba(245,158,11,0.17),transparent_40%),linear-gradient(180deg,#030303_0%,#050505_50%,#020202_100%)]" />
 
         <nav className="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-3xl">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-8">
+          <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
             <BrandLogo compact />
 
             <div className="hidden items-center gap-8 lg:flex">
@@ -212,7 +212,7 @@ function App() {
           </div>
 
           {isMenuOpen && (
-            <div className="space-y-2 border-t border-white/10 bg-black/95 px-4 py-5 backdrop-blur-3xl transition-all duration-500 ease-out lg:hidden">
+            <div className="space-y-2 border-t border-white/10 bg-black/95 px-5 py-5 backdrop-blur-3xl transition-all duration-500 ease-out lg:hidden">
               {navItems.map((item) => (
                 <a
                   key={item.label}
@@ -238,16 +238,16 @@ function App() {
 
           <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(0,0,0,.98)_0%,rgba(0,0,0,.86)_45%,rgba(0,0,0,.97)_100%)]" />
 
-          <div className="relative mx-auto grid min-h-[92vh] max-w-7xl gap-8 px-4 py-12 sm:gap-10 sm:px-8 sm:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div className="relative mx-auto grid min-h-[92vh] max-w-7xl gap-8 px-5 py-12 sm:gap-10 sm:px-8 sm:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div className="relative flex min-h-[440px] items-center justify-center overflow-hidden rounded-[32px] border border-[#D4AF37]/25 bg-black/55 px-5 py-12 shadow-[0_40px_80px_rgba(0,0,0,0.75)] backdrop-blur-xl sm:min-h-[520px] sm:px-8">
               <img
-                src="https://images.unsplash.com/photo-1618375531912-867984bdfd87?auto=format&fit=crop&w=900&q=80"
+                src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80"
                 alt="male runway model"
                 className="absolute left-0 top-0 h-full w-[36%] object-cover object-top opacity-65 sm:w-[33%]"
               />
 
               <img
-                src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80"
+                src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=80"
                 alt="female editorial model"
                 className="absolute right-0 top-0 h-full w-[36%] object-cover object-top opacity-65 sm:w-[33%]"
               />
@@ -309,7 +309,7 @@ function App() {
           </div>
         </header>
 
-        <section className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-4 py-16 sm:grid-cols-4 sm:px-8 sm:py-20">
+        <section className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-5 py-16 sm:grid-cols-4 sm:px-8 sm:py-20">
           {showcaseStats.map((stat) => (
             <div
               key={stat.label}
@@ -326,7 +326,7 @@ function App() {
           ))}
         </section>
 
-        <section className="mx-auto max-w-7xl px-4 py-10 sm:px-8 sm:py-14">
+        <section className="mx-auto max-w-7xl px-5 py-10 sm:px-8 sm:py-14">
           <div className="mb-8 text-center">
             <p className="text-xs uppercase tracking-[0.4em] text-amber-300">
               Event Highlights
@@ -382,7 +382,7 @@ function App() {
 
         <section
           id="gallery"
-          className="mx-auto max-w-7xl px-4 py-12 sm:px-8 sm:py-20"
+          className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-20"
         >
           <div className="mb-10 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div>
@@ -396,8 +396,8 @@ function App() {
             </div>
 
             <p className="max-w-lg text-sm leading-relaxed text-zinc-400">
-              A curated balance of runway, beauty,
-              and campaign-ready talent.
+              A cinematic edit of couture runway moments, dramatic lighting,
+              and campaign-level editorial presence.
             </p>
           </div>
 
@@ -430,7 +430,7 @@ function App() {
 
         <section
           id="categories"
-          className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-8 sm:py-20 lg:grid-cols-[0.95fr_1.05fr]"
+          className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-[0.95fr_1.05fr]"
         >
           <div>
             <p className="text-xs uppercase tracking-[0.35em] text-amber-300">
@@ -463,7 +463,7 @@ function App() {
 
         <section
           id="testimonials"
-          className="border-y border-white/10 bg-white/[0.03] px-4 py-20 sm:px-8"
+          className="border-y border-white/10 bg-white/[0.03] px-5 py-20 sm:px-8"
         >
           <div className="mx-auto max-w-7xl">
             <h3 className="mb-10 text-center text-2xl font-semibold sm:text-4xl">
@@ -505,7 +505,7 @@ function App() {
 
         <section
           id="apply"
-          className="mx-auto max-w-7xl px-4 py-20 sm:px-8"
+          className="mx-auto max-w-7xl px-5 py-20 sm:px-8"
         >
           <div className="grid gap-8 rounded-3xl border border-[#D4AF37]/20 bg-gradient-to-b from-white/8 to-white/[0.03] p-8 shadow-2xl backdrop-blur-lg sm:p-10 lg:grid-cols-2">
             <div>
@@ -553,7 +553,7 @@ function App() {
           </div>
         </section>
 
-        <footer className="border-t border-white/10 px-4 py-10 sm:px-8">
+        <footer className="border-t border-white/10 px-5 py-10 sm:px-8">
           <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 text-xs uppercase tracking-[0.2em] text-zinc-400 sm:flex-row">
             <BrandLogo />
 
