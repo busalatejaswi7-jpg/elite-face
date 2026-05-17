@@ -26,12 +26,12 @@ const categories = [
 ];
 
 const gallery = [
-  'https://images.unsplash.com/photo-1603217192634-61068e4d4bf9?auto=format&fit=crop&w=1400&q=80',
-  'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1400&q=80',
-  'https://images.unsplash.com/photo-1542295669297-4d352b042bca?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1600&q=85',
+  'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1600&q=85',
+  'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1400&q=85',
+  'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1400&q=85',
+  'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1400&q=85',
+  'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1400&q=85',
 ];
 
 const testimonials = [
@@ -41,7 +41,7 @@ const testimonials = [
     quote:
       'Elite Face positioned my portfolio with cinematic precision and connected me with couture houses that value craft.',
     image:
-      'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=300&q=80',
+      'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=500&q=85',
   },
   {
     name: 'Daniel Laurent',
@@ -49,7 +49,7 @@ const testimonials = [
     quote:
       'From casting to show-day execution, the team delivers a luxury-standard experience that translates on every runway.',
     image:
-      'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80',
+      'https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=500&q=85',
   },
   {
     name: 'Safiya Khan',
@@ -57,7 +57,7 @@ const testimonials = [
     quote:
       'Their direction elevated my presence across international editorials and made every campaign feel premium and intentional.',
     image:
-      'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=300&q=80',
+      'https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?auto=format&fit=crop&w=500&q=85',
   },
 ];
 
@@ -241,13 +241,13 @@ function App() {
           <div className="relative mx-auto grid min-h-[92vh] max-w-7xl gap-8 px-5 py-12 sm:gap-10 sm:px-8 sm:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div className="relative flex min-h-[440px] items-center justify-center overflow-hidden rounded-[32px] border border-[#D4AF37]/25 bg-black/55 px-5 py-12 shadow-[0_40px_80px_rgba(0,0,0,0.75)] backdrop-blur-xl sm:min-h-[520px] sm:px-8">
               <img
-                src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80"
+                src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=85"
                 alt="male runway model"
                 className="absolute left-0 top-0 h-full w-[36%] object-cover object-top opacity-65 sm:w-[33%]"
               />
 
               <img
-                src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=80"
+                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=85"
                 alt="female editorial model"
                 className="absolute right-0 top-0 h-full w-[36%] object-cover object-top opacity-65 sm:w-[33%]"
               />
