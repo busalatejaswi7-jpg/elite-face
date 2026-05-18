@@ -8,7 +8,6 @@ import gallery2 from './assets/gallery/gallery2.jpg';
 import gallery3 from './assets/gallery/gallery3.jpg';
 import gallery4 from './assets/gallery/gallery4.jpg';
 import gallery5 from './assets/gallery/gallery5.jpg';
-import gallery6 from './assets/gallery/gallery6.jpg';
 
 import client1 from './assets/testimonials/client1.jpg';
 import client2 from './assets/testimonials/client2.jpg';
@@ -43,7 +42,6 @@ const gallery = [
   gallery3,
   gallery4,
   gallery5,
-  gallery6,
 ];
 
 const testimonials = [
