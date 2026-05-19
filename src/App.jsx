@@ -541,25 +541,46 @@ function App() {
               <p className="mt-3 text-zinc-300">Your premium screening request has been submitted successfully.</p>
             </div>
           ) : (
-          <div className="rounded-3xl border border-[#D4AF37]/30 bg-gradient-to-b from-black/70 to-zinc-950/70 p-6 shadow-2xl backdrop-blur-xl sm:p-10">
-            <h3 className="text-2xl font-semibold sm:text-3xl">Apply for Elite Face 2026</h3>
-            <form onSubmit={handleSubmit} className="mt-8 space-y-8">
-              <div className="space-y-3"><p className="text-xs uppercase tracking-[0.25em] text-amber-300">Personal Details</p>
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{['name','age','height','bust','waist','hips'].map((field)=>(<input key={field} required name={field} placeholder={field==='name'?'Full Name':field[0].toUpperCase()+field.slice(1)} onChange={(e)=>setFormData({...formData,[field]:e.target.value})} className="rounded-xl border border-[#D4AF37]/25 bg-black/40 px-4 py-3 text-sm outline-none focus:border-[#D4AF37]/60"/>))}</div>
-              </div>
-              <div className="space-y-3"><p className="text-xs uppercase tracking-[0.25em] text-amber-300">Experience & Location</p>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <select required onChange={(e)=>setFormData({...formData,category:e.target.value})} className="rounded-xl border border-[#D4AF37]/25 bg-black/40 px-4 py-3 text-sm"><option value="">Category</option><option>Runway Editorial</option><option>Luxury Campaign</option><option>Beauty & Cosmetics</option><option>Digital Creator</option><option>New Face Discovery</option></select>
-                  <select required onChange={(e)=>setFormData({...formData,city:e.target.value})} className="rounded-xl border border-[#D4AF37]/25 bg-black/40 px-4 py-3 text-sm"><option value="">Location</option><option>Mumbai</option><option>Delhi</option><option>Bengaluru</option><option>International</option><option>Others</option></select>
-                  <input required placeholder="Instagram Handle" onChange={(e)=>setFormData({...formData,instagram:e.target.value})} className="rounded-xl border border-[#D4AF37]/25 bg-black/40 px-4 py-3 text-sm sm:col-span-2"/>
-                </div></div>
-              <div className="space-y-3"><p className="text-xs uppercase tracking-[0.25em] text-amber-300">Portfolio Submission</p>
-                <div className="grid gap-4 sm:grid-cols-2"><label className="rounded-2xl border border-dashed border-[#D4AF37]/35 bg-white/[0.02] p-5 text-sm">Upload Polaroids / Digitals<p className="mt-1 text-xs text-zinc-400">(Max 3 files, no makeup/filters)</p><input type="file" accept=".jpg,.jpeg,.png" multiple className="mt-3 block w-full text-xs"/></label>
-                <label className="rounded-2xl border border-dashed border-[#D4AF37]/35 bg-white/[0.02] p-5 text-sm">Upload Portfolio & Photos<p className="mt-1 text-xs text-zinc-400">(Max 5 files)</p><input type="file" accept=".jpg,.jpeg,.png" multiple className="mt-3 block w-full text-xs"/></label></div>
-                <p className="text-xs text-zinc-400">Supported: JPG, PNG • Max 5MB per file</p><input type="file" accept="video/*" className="rounded-xl border border-[#D4AF37]/25 bg-black/40 px-4 py-3 text-xs"/>
-              </div>
-              <div className="rounded-2xl border border-[#D4AF37]/30 bg-white/[0.02] p-5"><p className="text-sm text-amber-200">₹2,000 Professional Package Includes:</p><ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-zinc-300"><li>Digital Profile Screening</li><li>Expert Portfolio Evaluation</li><li>Inclusion in Active Casting Database</li></ul><div className="mt-4 rounded-xl border border-[#D4AF37]/20 bg-black/40 p-3 text-xs text-zinc-400">Secure Payment UI Placeholder • Encrypted Privacy Badge 🔒</div><label className="mt-4 flex items-start gap-2 text-xs text-zinc-300"><input type="checkbox" required onChange={(e)=>setFormData({...formData,legalConsent:e.target.checked})}/>I agree that the information provided is accurate and I consent to the non-refundable profile evaluation fee of ₹2,000.</label></div>
-              <button type="submit" className="w-full rounded-full bg-gradient-to-r from-amber-300 to-yellow-200 py-3 text-xs font-bold uppercase tracking-[0.22em] text-black">Submit Application</button>
+          <div className="rounded-3xl border border-[#D4AF37]/30 bg-gradient-to-b from-black/75 to-zinc-950/75 p-5 shadow-[0_25px_80px_rgba(0,0,0,0.68)] backdrop-blur-xl sm:p-8 lg:p-10">
+            <div className="border-b border-[#D4AF37]/20 pb-6">
+              <p className="text-[10px] uppercase tracking-[0.3em] text-amber-300">Premium Onboarding</p>
+              <h3 className="mt-3 text-2xl font-semibold sm:text-3xl">Apply for Elite Face 2026</h3>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-400">Complete your profile with accurate details for professional screening and couture casting consideration.</p>
+            </div>
+            <form onSubmit={handleSubmit} className="mt-6 space-y-6 sm:mt-8 sm:space-y-8">
+              <fieldset className="space-y-4 rounded-2xl border border-[#D4AF37]/15 bg-white/[0.015] p-4 sm:p-5">
+                <legend className="px-2 text-[11px] uppercase tracking-[0.25em] text-amber-300">Section 1 — Personal Details</legend>
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{['name','age','height','bust','waist','hips'].map((field)=>(<input key={field} required name={field} placeholder={field==='name'?'Full Name':field[0].toUpperCase()+field.slice(1)} onChange={(e)=>setFormData({...formData,[field]:e.target.value})} className="w-full rounded-xl border border-[#D4AF37]/25 bg-black/45 px-4 py-3 text-sm text-zinc-100 outline-none transition duration-300 placeholder:text-zinc-500 focus:border-[#D4AF37]/65 focus:bg-black/55"/>))}</div>
+              </fieldset>
+              <fieldset className="space-y-4 rounded-2xl border border-[#D4AF37]/15 bg-white/[0.015] p-4 sm:p-5">
+                <legend className="px-2 text-[11px] uppercase tracking-[0.25em] text-amber-300">Section 2 — Experience & Location</legend>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <select required onChange={(e)=>setFormData({...formData,category:e.target.value})} className="w-full rounded-xl border border-[#D4AF37]/25 bg-black/45 px-4 py-3 text-sm text-zinc-100 outline-none transition duration-300 focus:border-[#D4AF37]/65"><option value="">Category</option><option>Runway Editorial</option><option>Luxury Campaign</option><option>Beauty & Cosmetics</option><option>Digital Creator</option><option>New Face Discovery</option></select>
+                  <select required onChange={(e)=>setFormData({...formData,city:e.target.value})} className="w-full rounded-xl border border-[#D4AF37]/25 bg-black/45 px-4 py-3 text-sm text-zinc-100 outline-none transition duration-300 focus:border-[#D4AF37]/65"><option value="">Location</option><option>Mumbai</option><option>Delhi</option><option>Bengaluru</option><option>International</option><option>Others</option></select>
+                  <input required placeholder="Instagram Handle" onChange={(e)=>setFormData({...formData,instagram:e.target.value})} className="w-full rounded-xl border border-[#D4AF37]/25 bg-black/45 px-4 py-3 text-sm text-zinc-100 outline-none transition duration-300 placeholder:text-zinc-500 focus:border-[#D4AF37]/65 sm:col-span-2"/>
+                </div>
+              </fieldset>
+              <fieldset className="space-y-4 rounded-2xl border border-[#D4AF37]/15 bg-white/[0.015] p-4 sm:p-5">
+                <legend className="px-2 text-[11px] uppercase tracking-[0.25em] text-amber-300">Section 3 — Portfolio Submission</legend>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <label className="rounded-2xl border border-dashed border-[#D4AF37]/35 bg-black/35 p-4 text-sm transition hover:border-[#D4AF37]/55 hover:bg-black/45">Upload Polaroids / Digitals<p className="mt-1 text-xs text-zinc-400">Max 3 files • natural light • no filters</p><input type="file" accept=".jpg,.jpeg,.png" multiple className="mt-3 block w-full text-xs text-zinc-300 file:mr-3 file:rounded-md file:border-0 file:bg-[#D4AF37]/20 file:px-2 file:py-1 file:text-[11px] file:text-amber-100"/></label>
+                  <label className="rounded-2xl border border-dashed border-[#D4AF37]/35 bg-black/35 p-4 text-sm transition hover:border-[#D4AF37]/55 hover:bg-black/45">Upload Portfolio Photos<p className="mt-1 text-xs text-zinc-400">Max 5 files • couture/editorial looks</p><input type="file" accept=".jpg,.jpeg,.png" multiple className="mt-3 block w-full text-xs text-zinc-300 file:mr-3 file:rounded-md file:border-0 file:bg-[#D4AF37]/20 file:px-2 file:py-1 file:text-[11px] file:text-amber-100"/></label>
+                  <label className="rounded-2xl border border-dashed border-[#D4AF37]/35 bg-black/35 p-4 text-sm transition hover:border-[#D4AF37]/55 hover:bg-black/45 sm:col-span-2">Upload Introduction Video<p className="mt-1 text-xs text-zinc-400">Max 60 seconds • clear natural audio</p><input type="file" accept="video/*" className="mt-3 block w-full text-xs text-zinc-300 file:mr-3 file:rounded-md file:border-0 file:bg-[#D4AF37]/20 file:px-2 file:py-1 file:text-[11px] file:text-amber-100"/></label>
+                </div>
+                <p className="text-xs text-zinc-500">Supported: JPG, PNG, MP4 • Max 5MB per file</p>
+              </fieldset>
+              <fieldset className="rounded-2xl border border-[#D4AF37]/30 bg-white/[0.02] p-4 sm:p-5">
+                <legend className="px-2 text-[11px] uppercase tracking-[0.25em] text-amber-300">Section 4 — Premium Package</legend>
+                <p className="text-sm font-medium text-amber-200">₹2,000 Professional Package Includes:</p>
+                <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-zinc-300"><li>Digital Profile Screening</li><li>Expert Portfolio Evaluation</li><li>Inclusion in Active Casting Database</li></ul>
+                <div className="mt-4 grid gap-3 text-xs sm:grid-cols-2">
+                  <div className="rounded-xl border border-[#D4AF37]/20 bg-black/40 p-3 text-zinc-400">Secure Payment Placeholder<br />UPI / Card gateway integration ready.</div>
+                  <div className="rounded-xl border border-emerald-500/25 bg-emerald-900/10 p-3 text-emerald-200">🔒 256-bit encrypted submission<br />Your data is processed securely.</div>
+                </div>
+                <p className="mt-3 text-xs leading-relaxed text-zinc-400">Trust Note: No guaranteed selection is promised. Applications are reviewed by the official Elite Face screening team only.</p>
+                <label className="mt-4 flex items-start gap-2 text-xs leading-relaxed text-zinc-300"><input type="checkbox" required onChange={(e)=>setFormData({...formData,legalConsent:e.target.checked})} className="mt-0.5"/>I confirm my details are accurate and consent to the non-refundable ₹2,000 professional profile evaluation fee.</label>
+              </fieldset>
+              <button type="submit" className="w-full rounded-full bg-gradient-to-r from-amber-300 to-yellow-200 py-3 text-xs font-bold uppercase tracking-[0.22em] text-black transition duration-300 hover:scale-[1.01] hover:shadow-[0_10px_30px_rgba(212,175,55,0.3)]">Submit Application</button>
             </form>
           </div>) }
         </section>
