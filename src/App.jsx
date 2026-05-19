@@ -44,6 +44,13 @@ const gallery = [
   gallery5,
 ];
 
+const faqItems = [
+  { q: 'Is the ₹2,000 profile evaluation fee refundable?', a: 'No. The professional screening and expert review process begins immediately after submission, so the fee is non-refundable.' },
+  { q: 'What should I upload in polaroids/digitals?', a: 'Upload clear natural-light images with no makeup filters and simple styling.' },
+  { q: 'Can international applicants apply?', a: 'Yes. Select International location and provide an active Instagram handle.' },
+];
+
+
 const testimonials = [
   {
     name: 'Ananya Kapoor',
@@ -131,12 +138,21 @@ function BrandLogo({ compact = false }) {
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [faqOpen, setFaqOpen] = useState(0);
+  const [showCookie, setShowCookie] = useState(true);
+  const [submitted, setSubmitted] = useState(false);
 
   const [formData, setFormData] = useState({
     name: '',
     age: '',
+    height: '',
+    bust: '',
+    waist: '',
+    hips: '',
     category: '',
     city: '',
+    instagram: '',
+    legalConsent: false,
   });
 
   useEffect(() => {
@@ -160,9 +176,7 @@ function App() {
         }
       );
 
-      const data = await response.json();
-
-      alert(data.message);
+      if (response.ok) setSubmitted(true);
     } catch {
       alert('Server Error');
     }
@@ -520,57 +534,44 @@ function App() {
           id="apply"
           className="mx-auto max-w-7xl px-5 py-20 sm:px-8"
         >
-          <div className="grid gap-8 rounded-3xl border border-[#D4AF37]/20 bg-gradient-to-b from-white/8 to-white/[0.03] p-8 shadow-2xl backdrop-blur-lg sm:p-10 lg:grid-cols-2">
-            <div>
-              <h3 className="text-2xl font-semibold sm:text-3xl">
-                Apply for Elite Face 2026
-              </h3>
-
-              <p className="mt-3 text-sm leading-relaxed text-zinc-300">
-                Minimal, premium, and built for
-                serious talent.
-              </p>
+          {submitted ? (
+            <div className="rounded-3xl border border-[#D4AF37]/30 bg-black/50 p-10 text-center backdrop-blur-xl">
+              <p className="text-xs uppercase tracking-[0.35em] text-amber-300">Application Received</p>
+              <h3 className="mt-4 text-3xl font-semibold">Welcome to Elite Face 2026</h3>
+              <p className="mt-3 text-zinc-300">Your premium screening request has been submitted successfully.</p>
             </div>
-
-            <form
-              onSubmit={handleSubmit}
-              className="grid grid-cols-1 gap-4 sm:grid-cols-2"
-            >
-              {['name', 'age', 'category', 'city'].map(
-                (field) => (
-                  <input
-                    key={field}
-                    name={field}
-                    placeholder={
-                      field[0].toUpperCase() +
-                      field.slice(1)
-                    }
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        [field]: e.target.value,
-                      })
-                    }
-                    className="rounded-xl border border-zinc-700 bg-black/45 px-4 py-3 text-sm outline-none transition focus:border-[#D4AF37]/60"
-                  />
-                )
-              )}
-
-              <button
-                type="submit"
-                className="mt-2 rounded-full bg-gradient-to-r from-amber-300 to-yellow-200 py-3 text-xs font-bold uppercase tracking-[0.22em] text-black transition hover:opacity-90 sm:col-span-2"
-              >
-                Submit Application
-              </button>
+          ) : (
+          <div className="rounded-3xl border border-[#D4AF37]/30 bg-gradient-to-b from-black/70 to-zinc-950/70 p-6 shadow-2xl backdrop-blur-xl sm:p-10">
+            <h3 className="text-2xl font-semibold sm:text-3xl">Apply for Elite Face 2026</h3>
+            <form onSubmit={handleSubmit} className="mt-8 space-y-8">
+              <div className="space-y-3"><p className="text-xs uppercase tracking-[0.25em] text-amber-300">Personal Details</p>
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{['name','age','height','bust','waist','hips'].map((field)=>(<input key={field} required name={field} placeholder={field==='name'?'Full Name':field[0].toUpperCase()+field.slice(1)} onChange={(e)=>setFormData({...formData,[field]:e.target.value})} className="rounded-xl border border-[#D4AF37]/25 bg-black/40 px-4 py-3 text-sm outline-none focus:border-[#D4AF37]/60"/>))}</div>
+              </div>
+              <div className="space-y-3"><p className="text-xs uppercase tracking-[0.25em] text-amber-300">Experience & Location</p>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <select required onChange={(e)=>setFormData({...formData,category:e.target.value})} className="rounded-xl border border-[#D4AF37]/25 bg-black/40 px-4 py-3 text-sm"><option value="">Category</option><option>Runway Editorial</option><option>Luxury Campaign</option><option>Beauty & Cosmetics</option><option>Digital Creator</option><option>New Face Discovery</option></select>
+                  <select required onChange={(e)=>setFormData({...formData,city:e.target.value})} className="rounded-xl border border-[#D4AF37]/25 bg-black/40 px-4 py-3 text-sm"><option value="">Location</option><option>Mumbai</option><option>Delhi</option><option>Bengaluru</option><option>International</option><option>Others</option></select>
+                  <input required placeholder="Instagram Handle" onChange={(e)=>setFormData({...formData,instagram:e.target.value})} className="rounded-xl border border-[#D4AF37]/25 bg-black/40 px-4 py-3 text-sm sm:col-span-2"/>
+                </div></div>
+              <div className="space-y-3"><p className="text-xs uppercase tracking-[0.25em] text-amber-300">Portfolio Submission</p>
+                <div className="grid gap-4 sm:grid-cols-2"><label className="rounded-2xl border border-dashed border-[#D4AF37]/35 bg-white/[0.02] p-5 text-sm">Upload Polaroids / Digitals<p className="mt-1 text-xs text-zinc-400">(Max 3 files, no makeup/filters)</p><input type="file" accept=".jpg,.jpeg,.png" multiple className="mt-3 block w-full text-xs"/></label>
+                <label className="rounded-2xl border border-dashed border-[#D4AF37]/35 bg-white/[0.02] p-5 text-sm">Upload Portfolio & Photos<p className="mt-1 text-xs text-zinc-400">(Max 5 files)</p><input type="file" accept=".jpg,.jpeg,.png" multiple className="mt-3 block w-full text-xs"/></label></div>
+                <p className="text-xs text-zinc-400">Supported: JPG, PNG • Max 5MB per file</p><input type="file" accept="video/*" className="rounded-xl border border-[#D4AF37]/25 bg-black/40 px-4 py-3 text-xs"/>
+              </div>
+              <div className="rounded-2xl border border-[#D4AF37]/30 bg-white/[0.02] p-5"><p className="text-sm text-amber-200">₹2,000 Professional Package Includes:</p><ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-zinc-300"><li>Digital Profile Screening</li><li>Expert Portfolio Evaluation</li><li>Inclusion in Active Casting Database</li></ul><div className="mt-4 rounded-xl border border-[#D4AF37]/20 bg-black/40 p-3 text-xs text-zinc-400">Secure Payment UI Placeholder • Encrypted Privacy Badge 🔒</div><label className="mt-4 flex items-start gap-2 text-xs text-zinc-300"><input type="checkbox" required onChange={(e)=>setFormData({...formData,legalConsent:e.target.checked})}/>I agree that the information provided is accurate and I consent to the non-refundable profile evaluation fee of ₹2,000.</label></div>
+              <button type="submit" className="w-full rounded-full bg-gradient-to-r from-amber-300 to-yellow-200 py-3 text-xs font-bold uppercase tracking-[0.22em] text-black">Submit Application</button>
             </form>
-          </div>
+          </div>) }
         </section>
 
-        <footer className="border-t border-white/10 px-5 py-10 sm:px-8">
+        <section className="mx-auto max-w-7xl px-5 py-6 sm:px-8"><h3 className="text-xl font-semibold">FAQs</h3><div className="mt-4 space-y-3">{faqItems.map((f,i)=><div key={f.q} className="rounded-xl border border-[#D4AF37]/20 bg-white/[0.02]"><button onClick={()=>setFaqOpen(faqOpen===i?-1:i)} className="flex w-full items-center justify-between px-4 py-3 text-left text-sm">{f.q}<span>{faqOpen===i?'−':'+'}</span></button>{faqOpen===i&&<p className="px-4 pb-4 text-xs text-zinc-300">{f.a}</p>}</div>)}</div></section>
+
+        <section className="mx-auto grid max-w-7xl gap-6 px-5 py-8 sm:px-8 lg:grid-cols-2"><iframe title="Elite Face Office" className="h-64 w-full rounded-2xl border border-[#D4AF37]/20" src="https://www.google.com/maps?q=Mumbai&output=embed" loading="lazy" /><form className="rounded-2xl border border-[#D4AF37]/20 bg-black/40 p-5"><h4 className="text-sm uppercase tracking-[0.2em] text-amber-300">Client Inquiry</h4><div className="mt-3 space-y-3"><input placeholder="Brand / Company" className="w-full rounded-lg border border-zinc-700 bg-black/50 px-3 py-2 text-sm"/><input placeholder="Email" className="w-full rounded-lg border border-zinc-700 bg-black/50 px-3 py-2 text-sm"/><textarea placeholder="Casting Requirement" className="h-24 w-full rounded-lg border border-zinc-700 bg-black/50 px-3 py-2 text-sm"/><button type="button" className="rounded-full border border-[#D4AF37]/40 px-4 py-2 text-xs uppercase tracking-[0.2em]">Send Inquiry</button></div></form></section>
+<footer className="border-t border-white/10 px-5 py-10 sm:px-8">
           <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 text-xs uppercase tracking-[0.2em] text-zinc-400 sm:flex-row">
             <BrandLogo />
 
-            <p>© 2026 Elite Face India</p>
+            <p>© {new Date().getFullYear()} Elite Face India</p>
 
             <div className="flex gap-5">
               <a href="#" className="hover:text-amber-200">
@@ -586,7 +587,12 @@ function App() {
               </a>
             </div>
           </div>
+        <p className="mt-6 text-center text-[10px] uppercase tracking-[0.16em] text-red-300">Anti-Scam Notice: Elite Face never guarantees selection, and payments are accepted only via official channels.</p>
         </footer>
+
+        <a href="https://wa.me/919999999999" className="fixed bottom-6 right-6 z-40 rounded-full bg-[#25D366] px-4 py-3 text-xs font-bold text-black shadow-2xl">WhatsApp</a>
+
+        {showCookie && <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-[#D4AF37]/30 bg-black/95 p-4 text-xs">We use cookies for secure submissions and analytics. <button onClick={()=>setShowCookie(false)} className="ml-3 rounded border border-[#D4AF37]/40 px-3 py-1">Accept</button></div>}
       </div>
     </>
   );
