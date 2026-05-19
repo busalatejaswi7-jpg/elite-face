@@ -1,189 +1,594 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import bg from './assets/bg.jpg';
 import maleModel from './assets/hero/male-model.jpg';
 import femaleModel from './assets/hero/female-model.jpg';
+
 import gallery1 from './assets/gallery/gallery1.jpg';
 import gallery2 from './assets/gallery/gallery2.jpg';
 import gallery3 from './assets/gallery/gallery3.jpg';
 import gallery4 from './assets/gallery/gallery4.jpg';
 import gallery5 from './assets/gallery/gallery5.jpg';
 
-const stepFields = [
-  ['name', 'age', 'height', 'bust', 'waist', 'hips'],
-  ['category', 'location', 'instagram'],
-  ['digitals', 'portfolio', 'video'],
-  ['consent'],
-];
-
+import client1 from './assets/testimonials/client1.jpg';
+import client2 from './assets/testimonials/client2.jpg';
+import client3 from './assets/testimonials/client3.jpg';
 const navItems = [
-  { label: 'Portfolio', href: '#portfolio' },
-  { label: 'Application', href: '#apply' },
-  { label: 'Team', href: '#team' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '#home' },
+  { label: 'Portfolio', href: '#gallery' },
+  { label: 'Categories', href: '#categories' },
+  { label: 'Testimonials', href: '#testimonials' },
+  { label: 'Apply', href: '#apply' },
 ];
 
-const logos = ['Vogue India', 'Lakmé Fashion Week', 'Elle India', 'GQ India', 'Harper Bazaar'];
-const faq = [
-  { q: 'Is the ₹2,000 package mandatory?', a: 'Yes. It covers structured profile screening and internal evaluation by our talent panel.' },
-  { q: 'How long does evaluation take?', a: 'Shortlisted profiles are generally reviewed within 7-10 working days.' },
-  { q: 'How do you communicate?', a: 'Only via official @elitefaceindia.com emails and verified WhatsApp business account.' },
+const showcaseStats = [
+  { value: '250+', label: 'Models Signed' },
+  { value: '48', label: 'Partner Brands' },
+  { value: '82', label: 'Global Events' },
+  { value: '29', label: 'Fashion Awards' },
 ];
 
-const initialForm = {
-  name: '', age: '', height: '', bust: '', waist: '', hips: '',
-  category: '', location: '', instagram: '', digitals: null, portfolio: null, video: null, consent: false,
-};
+const categories = [
+  'Runway Editorial',
+  'Luxury Campaign',
+  'Beauty & Cosmetics',
+  'Avant-Garde Concept',
+  'Digital Creator',
+  'New Face Discovery',
+];
 
-const inputClass = 'w-full border-b border-[#D4AF37]/35 bg-transparent px-1 py-3 text-sm text-zinc-100 placeholder:text-zinc-500 outline-none transition focus:border-[#D4AF37]';
+const gallery = [
+  gallery1,
+  gallery2,
+  gallery3,
+  gallery4,
+  gallery5,
+];
+
+const testimonials = [
+  {
+    name: 'Ananya Kapoor',
+    role: 'Runway Talent, Lakmé Fashion Week',
+    quote:
+      'Elite Face translated my ramp presence into couture campaign opportunities with an editorial finish that global clients immediately recognized.',
+    image: client1,
+  },
+  {
+    name: 'Arjun Mehra',
+    role: 'Fashion Director, House of Noor',
+    quote:
+      'Their casting quality is exceptional—every profile arrived polished, camera-ready, and aligned with luxury brand storytelling from day one.',
+    image:
+      client2
+  },
+  {
+    name: 'Meher Sethi',
+    role: 'Beauty Campaign Lead, Aurelia Luxe',
+    quote:
+      'From beauty close-ups to couture edits, the agency consistently delivered high-fashion talent that elevated the full visual narrative.',
+    image:
+     client3
+  },
+];
+
+function BrandLogo({ compact = false }) {
+  return (
+    <a
+      href="#home"
+      className="group inline-flex items-center gap-3"
+      aria-label="Elite Face India"
+    >
+      <span className="grid h-10 w-10 place-items-center rounded-full border border-[#D4AF37]/40 bg-black/90 shadow-[0_0_28px_rgba(212,175,55,0.35)]">
+        <svg viewBox="0 0 40 40" className="h-6 w-6" fill="none">
+          <path
+            d="M7 32V8h22"
+            stroke="url(#g)"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+          />
+          <path
+            d="M17 20h14"
+            stroke="url(#g)"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+          />
+          <path
+            d="M17 30h12"
+            stroke="url(#g)"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+          />
+          <path
+            d="M27 8v24"
+            stroke="url(#g)"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+          />
+
+          <defs>
+            <linearGradient id="g" x1="6" y1="6" x2="34" y2="34">
+              <stop stopColor="#fde68a" />
+              <stop offset="1" stopColor="#D4AF37" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </span>
+
+      <span className="flex flex-col leading-tight">
+        <span className="text-[10px] tracking-[0.42em] text-amber-200/90">
+          ELITE FACE
+        </span>
+
+        {!compact && (
+          <span className="text-[11px] uppercase tracking-[0.28em] text-zinc-300">
+            India
+          </span>
+        )}
+      </span>
+    </a>
+  );
+}
 
 function App() {
-  const [formData, setFormData] = useState(initialForm);
-  const [step, setStep] = useState(1);
-  const [submitted, setSubmitted] = useState(false);
-  const [faqOpen, setFaqOpen] = useState(0);
-  const [cookieAccepted, setCookieAccepted] = useState(false);
-  const [menu, setMenu] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [formData, setFormData] = useState({
+    name: '',
+    age: '',
+    category: '',
+    city: '',
+  });
 
   useEffect(() => {
-    const saved = localStorage.getItem('elite-cookie-ok');
-    if (saved === 'yes') setCookieAccepted(true);
+    const timer = setTimeout(() => setIsLoading(false), 1400);
+
+    return () => clearTimeout(timer);
   }, []);
 
-  const year = new Date().getFullYear();
-
-  const stepProgress = useMemo(() => `${step}/4`, [step]);
-
-  const setField = (field, value) => setFormData((p) => ({ ...p, [field]: value }));
-
-  const isStepValid = () => {
-    const fields = stepFields[step - 1];
-    if (step === 3) return true;
-    if (step === 4) return !!formData.consent;
-    return fields.every((f) => `${formData[f]}`.trim());
-  };
-
-  const onSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!isStepValid()) return;
-    if (step < 4) return setStep((s) => s + 1);
-    setSubmitted(true);
-  };
 
-  if (submitted) {
-    return (
-      <main className="min-h-screen bg-black px-5 py-20 text-zinc-100">
-        <div className="mx-auto max-w-3xl rounded-3xl border border-[#D4AF37]/35 bg-white/5 p-10 text-center backdrop-blur-xl">
-          <p className="text-xs uppercase tracking-[0.35em] text-amber-300">Application received</p>
-          <h1 className="mt-4 text-4xl font-semibold">Welcome to Elite Face India</h1>
-          <p className="mt-5 text-zinc-300">Thank you for submitting your profile. Our team will contact shortlisted candidates through official channels only.</p>
-          <button onClick={() => { setSubmitted(false); setStep(1); setFormData(initialForm); }} className="mt-8 rounded-full border border-[#D4AF37]/40 px-6 py-3 text-xs uppercase tracking-[0.22em] hover:bg-[#D4AF37]/10">Submit another profile</button>
-        </div>
-      </main>
-    );
-  }
+    try {
+      const response = await fetch(
+        'http://localhost:5000/api/apply',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const data = await response.json();
+
+      alert(data.message);
+    } catch {
+      alert('Server Error');
+    }
+  };
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-black text-zinc-100">
-      <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(212,175,55,0.18),transparent_45%),radial-gradient(circle_at_80%_60%,rgba(212,175,55,0.1),transparent_50%),linear-gradient(180deg,#030303,#000)]" />
-      <nav className="sticky top-0 z-50 border-b border-white/10 bg-black/85 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
-          <a href="#" className="text-xs uppercase tracking-[0.4em] text-amber-300">Elite Face India</a>
-          <div className="hidden gap-8 lg:flex">{navItems.map((n) => <a key={n.label} href={n.href} className="text-xs uppercase tracking-[0.2em] text-zinc-300 hover:text-amber-200">{n.label}</a>)}</div>
-          <button onClick={() => setMenu((p) => !p)} className="rounded-full border border-[#D4AF37]/40 px-3 py-1 text-xs lg:hidden">Menu</button>
-        </div>
-        {menu && <div className="space-y-2 border-t border-white/10 px-5 py-4 lg:hidden">{navItems.map((n) => <a className="block text-xs text-zinc-300" href={n.href} key={n.label}>{n.label}</a>)}</div>}
-      </nav>
+    <>
+      {isLoading && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black">
+          <div className="flex flex-col items-center gap-4">
+            <div className="h-14 w-14 animate-spin rounded-full border-2 border-[#D4AF37]/30 border-t-[#D4AF37]" />
 
-      <header className="relative border-b border-white/10 px-5 py-16" id="portfolio">
-        <img src={bg} className="absolute inset-0 h-full w-full object-cover opacity-20" alt="luxury fashion backdrop" />
-        <div className="absolute inset-0 bg-black/70" />
-        <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-2 lg:items-center">
-          <div>
-            <p className="text-xs uppercase tracking-[0.35em] text-amber-300">Premium model onboarding</p>
-            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-6xl">Professional Luxury Application System</h1>
-            <p className="mt-5 max-w-xl text-zinc-300">Built for Indian runway, editorial and global campaign opportunities. Structured, secure and agency-authentic.</p>
+            <p className="text-xs tracking-[0.4em] text-amber-200">
+              ELITE FACE
+            </p>
           </div>
+        </div>
+      )}
+
+      <div className="min-h-screen overflow-x-clip bg-black text-zinc-100">
+        <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_15%_20%,rgba(251,191,36,0.22),transparent_42%),radial-gradient(circle_at_90%_75%,rgba(245,158,11,0.17),transparent_40%),linear-gradient(180deg,#030303_0%,#050505_50%,#020202_100%)]" />
+
+        <nav className="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-3xl">
+          <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
+            <BrandLogo compact />
+
+            <div className="hidden items-center gap-8 lg:flex">
+              {navItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="text-[11px] uppercase tracking-[0.2em] text-zinc-300 transition hover:text-amber-200"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+
+            <div className="flex items-center gap-3">
+              <a
+                href="#apply"
+                className="hidden rounded-full border border-[#D4AF37]/40 bg-gradient-to-r from-amber-300 to-yellow-200 px-6 py-2 text-[10px] font-bold uppercase tracking-[0.22em] text-black shadow-[0_0_35px_rgba(212,175,55,0.2)] transition hover:scale-[1.03] sm:block"
+              >
+                Book Casting
+              </a>
+
+              <button
+                onClick={() =>
+                  setIsMenuOpen((p) => !p)
+                }
+                className="rounded-full border border-zinc-700 p-2 lg:hidden"
+              >
+                ☰
+              </button>
+            </div>
+          </div>
+
+          {isMenuOpen && (
+            <div className="space-y-2 border-t border-white/10 bg-black/95 px-5 py-5 backdrop-blur-3xl transition-all duration-500 ease-out lg:hidden">
+              {navItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="block rounded px-3 py-3 text-xs uppercase tracking-[0.16em] text-zinc-300 hover:bg-zinc-900"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          )}
+        </nav>
+
+        <header
+          id="home"
+          className="relative overflow-hidden border-b border-white/10"
+        >
+          <img
+            src={bg}
+            alt="fashion hero"
+            className="absolute inset-0 h-full w-full object-cover object-top opacity-25"
+          />
+
+          <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(0,0,0,.98)_0%,rgba(0,0,0,.86)_45%,rgba(0,0,0,.97)_100%)]" />
+
+          <div className="relative mx-auto grid min-h-[92vh] max-w-7xl gap-8 px-5 py-12 sm:gap-10 sm:px-8 sm:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div className="relative flex min-h-[440px] items-center justify-center overflow-hidden rounded-[32px] border border-[#D4AF37]/25 bg-black/55 px-5 py-12 shadow-[0_40px_80px_rgba(0,0,0,0.75)] backdrop-blur-xl sm:min-h-[520px] sm:px-8">
+              <img
+
+
+                src={maleModel}
+                alt="male runway model"
+                className="absolute left-0 top-0 h-full w-[36%] object-cover object-top opacity-65 sm:w-[33%]"
+              />
+
+              <img
+
+                src={femaleModel}
+
+                alt="female editorial model"
+                className="absolute right-0 top-0 h-full w-[36%] object-cover object-top opacity-65 sm:w-[33%]"
+              />
+
+              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.95)_0%,rgba(0,0,0,0.2)_30%,rgba(0,0,0,0.2)_70%,rgba(0,0,0,0.95)_100%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(212,175,55,0.2),transparent_50%)]" />
+
+              <div className="relative z-10 max-w-[260px] text-center sm:max-w-[360px]">
+                <p className="text-[10px] uppercase tracking-[0.4em] text-amber-300 sm:text-xs">
+                  Luxury Fashion Portfolio
+                </p>
+
+                <h1 className="mt-4 text-2xl font-semibold leading-tight tracking-[0.05em] text-white sm:text-4xl lg:text-6xl xl:text-7xl">
+                  ELITE FACE INDIA
+                </h1>
+
+                <p className="mt-4 text-xs leading-relaxed text-zinc-300 sm:text-sm">
+                  Cinematic talent representation for global runway, luxury brands,
+                  and premium editorial campaigns.
+                </p>
+
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:justify-center">
+                  <a
+                    href="#apply"
+                    className="rounded-full bg-gradient-to-r from-amber-300 to-yellow-200 px-6 py-3 text-[10px] font-bold uppercase tracking-[0.2em] text-black transition duration-300 hover:scale-[1.03]"
+                  >
+                    Start Application
+                  </a>
+
+                  <a
+                    href="#gallery"
+                    className="rounded-full border border-[#D4AF37]/30 bg-white/5 px-6 py-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-xl transition duration-300 hover:border-[#D4AF37]/60"
+                  >
+                    View Portfolio
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid animate-fade-up gap-5 sm:gap-6 lg:pl-6">
+              <article className="overflow-hidden rounded-3xl border border-[#D4AF37]/25 bg-black/50 backdrop-blur-lg">
+                <div className="group relative">
+                  <img
+                    src={gallery[0]}
+                    alt="featured runway model"
+                    className="h-52 w-full object-cover object-top transition duration-700 group-hover:scale-[1.14] sm:h-64"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                </div>
+
+                <div className="grid grid-cols-2 gap-0 border-t border-white/10 bg-black/70 p-4">
+                  <p className="text-xs uppercase tracking-[0.2em] text-zinc-300">
+                    Signature Bookings
+                  </p>
+                  <p className="text-right text-xl font-semibold text-amber-200">96%</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </header>
+
+        <section className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-5 py-16 sm:grid-cols-4 sm:px-8 sm:py-20">
+          {showcaseStats.map((stat) => (
+            <div
+              key={stat.label}
+              className="rounded-2xl border border-[#D4AF37]/20 bg-white/5 p-6 shadow-2xl backdrop-blur-lg"
+            >
+              <p className="text-2xl font-semibold text-amber-200 sm:text-3xl">
+                {stat.value}
+              </p>
+
+              <p className="mt-2 text-[10px] uppercase tracking-[0.22em] text-zinc-300 sm:text-xs">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </section>
+
+        <section className="mx-auto max-w-7xl px-5 py-10 sm:px-8 sm:py-14">
+          <div className="mb-8 text-center">
+            <p className="text-xs uppercase tracking-[0.4em] text-amber-300">
+              Event Highlights
+            </p>
+
+            <h3 className="mt-3 text-2xl font-semibold text-white sm:text-4xl">
+              Elite Fashion Experience
+            </h3>
+          </div>
+
           <div className="grid grid-cols-2 gap-4">
-            {[maleModel, femaleModel, gallery1, gallery2].map((img) => <img key={img} src={img} className="h-44 w-full rounded-2xl border border-[#D4AF37]/20 object-cover" alt="runway model" />)}
-          </div>
-        </div>
-      </header>
+            {[
+              {
+                title: 'Open for All',
+                desc: 'Boys & Girls',
+                icon: '✦',
+              },
+              {
+                title: 'Age Group',
+                desc: '16 - 28 Years',
+                icon: '◈',
+              },
+              {
+                title: 'Luxury Rewards',
+                desc: 'Brand Campaigns',
+                icon: '✧',
+              },
+              {
+                title: 'Premium Auditions',
+                desc: 'Industry Jury',
+                icon: '⬡',
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="rounded-2xl border border-[#D4AF37]/25 bg-gradient-to-b from-zinc-900/70 to-black/80 p-5 shadow-[0_0_0_1px_rgba(212,175,55,0.08)] backdrop-blur-xl"
+              >
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full border border-[#D4AF37]/30 text-lg text-amber-300">
+                  {item.icon}
+                </div>
 
-      <section id="apply" className="mx-auto max-w-7xl px-5 py-16">
-        <div className="rounded-3xl border border-[#D4AF37]/30 bg-white/[0.04] p-6 backdrop-blur-2xl sm:p-10">
-          <div className="mb-8 flex items-center justify-between">
+                <h4 className="text-sm font-medium uppercase tracking-[0.12em] text-white">
+                  {item.title}
+                </h4>
+
+                <p className="mt-2 text-xs leading-relaxed text-zinc-400">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section
+          id="gallery"
+          className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-20"
+        >
+          <div className="mb-10 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <p className="text-xs uppercase tracking-[0.32em] text-amber-300">Application flow</p>
-              <h2 className="mt-2 text-3xl font-semibold">Step {step}: {['Personal Details', 'Experience & Location', 'Portfolio Submission', 'Package & Payment'][step - 1]}</h2>
+              <p className="text-xs uppercase tracking-[0.35em] text-amber-300">
+                Portfolio Gallery
+              </p>
+
+              <h2 className="mt-3 text-2xl font-semibold sm:text-4xl">
+                Editorial Selection
+              </h2>
             </div>
-            <span className="rounded-full border border-[#D4AF37]/40 px-4 py-2 text-xs tracking-[0.2em] text-amber-200">{stepProgress}</span>
+
+            <p className="max-w-lg text-sm leading-relaxed text-zinc-400">
+              A cinematic edit of couture runway moments, dramatic lighting,
+              and campaign-level editorial presence.
+            </p>
           </div>
 
-          <form onSubmit={onSubmit} className="space-y-8">
-            {step === 1 && <div className="grid gap-4 sm:grid-cols-2">{[
-              ['name', 'Full Name'], ['age', 'Age'], ['height', 'Height (ft/in or cm)'], ['bust', 'Bust/Chest'], ['waist', 'Waist'], ['hips', 'Hips'],
-            ].map(([field, label]) => <input key={field} className={inputClass} placeholder={label} value={formData[field]} onChange={(e) => setField(field, e.target.value)} required />)}</div>}
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-12">
+            <article className="group relative overflow-hidden rounded-2xl border border-[#D4AF37]/20 bg-zinc-900/70 lg:col-span-7">
+              <img
+                src={gallery[1]}
+                alt="fashion week runway model"
+                className="h-[350px] w-full object-cover transition duration-700 group-hover:scale-[1.14] sm:h-[430px]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/10" />
+            </article>
 
-            {step === 2 && <div className="grid gap-5 sm:grid-cols-2">
-              <select className={inputClass} value={formData.category} onChange={(e) => setField('category', e.target.value)} required>
-                <option value="">Select Category</option><option>Runway Editorial</option><option>Luxury Campaign</option><option>Beauty & Cosmetics</option><option>Digital Creator</option><option>New Face Discovery</option>
-              </select>
-              <select className={inputClass} value={formData.location} onChange={(e) => setField('location', e.target.value)} required>
-                <option value="">Select Location</option><option>Mumbai</option><option>Delhi</option><option>Bengaluru</option><option>International</option><option>Others</option>
-              </select>
-              <input className={`${inputClass} sm:col-span-2`} placeholder="Instagram Handle (@exampleusername)" value={formData.instagram} onChange={(e) => setField('instagram', e.target.value)} required />
-            </div>}
-
-            {step === 3 && <div className="space-y-5 text-sm">
-              <div className="rounded-2xl border border-[#D4AF37]/30 bg-black/30 p-5"><p className="mb-2 uppercase tracking-[0.2em] text-amber-200">A. Polaroids / Digitals (max 3)</p><p className="mb-3 text-zinc-400">No makeup, no filters, plain background, natural lighting.</p><input type="file" multiple accept=".jpg,.jpeg,.png" onChange={(e) => setField('digitals', e.target.files)} className="w-full text-zinc-400" /></div>
-              <div className="rounded-2xl border border-[#D4AF37]/30 bg-black/30 p-5"><p className="mb-2 uppercase tracking-[0.2em] text-amber-200">B. Professional Portfolio Photos (max 5)</p><p className="mb-3 text-zinc-400">Supported JPG/PNG, max 5MB per file.</p><input type="file" multiple accept=".jpg,.jpeg,.png" onChange={(e) => setField('portfolio', e.target.files)} className="w-full text-zinc-400" /></div>
-              <div className="rounded-2xl border border-[#D4AF37]/30 bg-black/30 p-5"><p className="mb-2 uppercase tracking-[0.2em] text-amber-200">Intro / Catwalk Video (15 sec)</p><p className="mb-3 text-zinc-400">Supported MP4/MOV, max 20MB.</p><input type="file" accept="video/*" onChange={(e) => setField('video', e.target.files?.[0] || null)} className="w-full text-zinc-400" /></div>
-            </div>}
-
-            {step === 4 && <div className="grid gap-6 lg:grid-cols-2">
-              <div className="rounded-2xl border border-[#D4AF37]/35 bg-gradient-to-b from-white/10 to-white/5 p-6">
-                <p className="text-xs uppercase tracking-[0.28em] text-amber-300">₹2,000 Professional Package Includes</p>
-                <ul className="mt-4 space-y-2 text-zinc-200"><li>• Digital Profile Screening</li><li>• Expert Portfolio Evaluation</li><li>• Inclusion in Active Casting Database</li></ul>
-                <div className="mt-5 rounded-xl border border-emerald-400/30 bg-emerald-400/10 p-3 text-xs text-emerald-200">Secure encrypted data • Razorpay payment integration placeholder</div>
-              </div>
-              <div className="space-y-4 rounded-2xl border border-white/15 bg-black/35 p-6">
-                <label className="flex items-start gap-3 text-sm text-zinc-200"><input type="checkbox" checked={formData.consent} onChange={(e) => setField('consent', e.target.checked)} className="mt-1" required /><span>I agree that the information provided is accurate and I consent to the non-refundable profile evaluation fee of ₹2,000.</span></label>
-                <p className="text-xs text-zinc-400">By continuing, you accept GDPR/privacy-compliant data handling. We never request payment via personal UPI IDs.</p>
-              </div>
-            </div>}
-
-            <div className="flex gap-3">
-              {step > 1 && <button type="button" onClick={() => setStep((s) => s - 1)} className="rounded-full border border-white/25 px-6 py-3 text-xs uppercase tracking-[0.2em]">Back</button>}
-              <button type="submit" className="rounded-full bg-gradient-to-r from-amber-300 to-yellow-200 px-7 py-3 text-xs font-bold uppercase tracking-[0.22em] text-black">{step === 4 ? 'Pay & Submit' : 'Continue'}</button>
+            <div className="grid gap-6 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1">
+              {gallery.slice(2, 4).map((img, i) => (
+                <article
+                  key={img}
+                  className="group relative overflow-hidden rounded-2xl border border-[#D4AF37]/20 bg-zinc-900/70"
+                >
+                  <img
+                    src={img}
+                    alt={`couture editorial look ${i + 1}`}
+                    className="h-[200px] w-full object-cover transition duration-700 group-hover:scale-[1.14] sm:h-[220px]"
+                  />
+                </article>
+              ))}
             </div>
-          </form>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      <section className="mx-auto grid max-w-7xl gap-8 px-5 py-10 lg:grid-cols-2" id="team">
-        <div className="rounded-3xl border border-[#D4AF37]/20 bg-white/5 p-7"><h3 className="text-2xl font-semibold">Meet the Team</h3><p className="mt-3 text-zinc-300">Casting directors, runway coaches and portfolio strategists for premium Indian and international placements.</p><img src={gallery3} className="mt-5 h-56 w-full rounded-2xl object-cover" alt="elite face team" /></div>
-        <div className="rounded-3xl border border-[#D4AF37]/20 bg-white/5 p-7" id="contact"><h3 className="text-2xl font-semibold">Client Inquiry Form</h3><div className="mt-4 grid gap-3"><input className={inputClass} placeholder="Brand / Agency Name" /><input className={inputClass} placeholder="Official Email" /><textarea className="min-h-28 w-full rounded-xl border border-[#D4AF37]/30 bg-black/35 p-3 text-sm" placeholder="Campaign requirements" /></div></div>
-      </section>
+        <section
+          id="categories"
+          className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-[0.95fr_1.05fr]"
+        >
+          <div>
+            <p className="text-xs uppercase tracking-[0.35em] text-amber-300">
+              Specialty Verticals
+            </p>
 
-      <section className="mx-auto max-w-7xl px-5 pb-16">
-        <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-7">
-          <h3 className="text-2xl font-semibold">FAQ</h3>
-          <div className="mt-4 space-y-3">{faq.map((item, i) => <div key={item.q} className="rounded-xl border border-[#D4AF37]/20 p-4"><button className="w-full text-left" onClick={() => setFaqOpen(i)}>{item.q}</button>{faqOpen === i && <p className="mt-2 text-sm text-zinc-300">{item.a}</p>}</div>)}</div>
-        </div>
-        <div className="mt-8 rounded-3xl border border-[#D4AF37]/20 bg-white/[0.03] p-7"><h3 className="text-xl font-semibold">Industry Partnerships</h3><div className="mt-4 flex flex-wrap gap-3">{logos.map((l) => <span key={l} className="rounded-full border border-[#D4AF37]/30 px-4 py-2 text-xs uppercase tracking-[0.15em] text-zinc-300">{l}</span>)}</div></div>
-        <div className="mt-8 rounded-3xl border border-[#D4AF37]/20 bg-white/[0.03] p-7"><h3 className="text-xl font-semibold">Official Office Location</h3><div className="mt-4 overflow-hidden rounded-2xl border border-white/10"><iframe title="Elite Face India map" src="https://maps.google.com/maps?q=Mumbai%20India&t=&z=11&ie=UTF8&iwloc=&output=embed" className="h-72 w-full" /></div></div>
-      </section>
+            <h3 className="mt-3 text-2xl font-semibold sm:text-4xl">
+              Distinct Talent Lanes
+            </h3>
 
-      <footer className="border-t border-white/10 px-5 py-8 text-center text-xs uppercase tracking-[0.2em] text-zinc-400">
-        <p>Anti-Scam Notice: We never guarantee selection and never request payments through personal accounts.</p>
-        <p className="mt-2">Official communication only from verified channels.</p>
-        <p className="mt-4">© {year} Elite Face India</p>
-      </footer>
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-zinc-400">
+              Premium category placement and clean
+              profile storytelling.
+            </p>
+          </div>
 
-      <a href="https://wa.me/910000000000" className="fixed bottom-6 right-5 rounded-full border border-emerald-300/50 bg-emerald-500/20 px-5 py-3 text-xs uppercase tracking-[0.2em] text-emerald-100">WhatsApp</a>
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
+            {categories.map((category) => (
+              <div
+                key={category}
+                className="rounded-2xl border border-[#D4AF37]/60 bg-gradient-to-b from-zinc-900/90 to-zinc-950 p-5 transition duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(212,175,55,0.2)]"
+              >
+                <p className="text-xs uppercase tracking-[0.18em] text-zinc-200 sm:text-sm">
+                  {category}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
 
-      {!cookieAccepted && <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-[#D4AF37]/30 bg-black/95 p-4 text-xs text-zinc-300"><div className="mx-auto flex max-w-7xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><p>We use cookies to improve your onboarding experience and analytics.</p><button onClick={() => { localStorage.setItem('elite-cookie-ok', 'yes'); setCookieAccepted(true); }} className="rounded-full border border-[#D4AF37]/40 px-4 py-2 uppercase tracking-[0.15em] text-amber-200">Accept</button></div></div>}
-    </div>
+        <section
+          id="testimonials"
+          className="border-y border-white/10 bg-white/[0.03] px-5 py-20 sm:px-8"
+        >
+          <div className="mx-auto max-w-7xl">
+            <h3 className="mb-10 text-center text-2xl font-semibold sm:text-4xl">
+              Client & Talent Voices
+            </h3>
+
+            <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
+              {testimonials.map((t) => (
+                <article
+                  key={t.name}
+                  className="rounded-2xl border border-[#D4AF37]/20 bg-black/45 p-7 backdrop-blur-lg"
+                >
+                  <div className="mb-5 flex items-center gap-3">
+                    <img
+                      src={t.image}
+                      alt={t.name}
+                      className="h-12 w-12 rounded-full object-cover"
+                    />
+
+                    <div>
+                      <p className="font-medium text-zinc-100">
+                        {t.name}
+                      </p>
+
+                      <p className="text-xs uppercase tracking-[0.15em] text-amber-200">
+                        {t.role}
+                      </p>
+                    </div>
+                  </div>
+
+                  <p className="text-sm leading-relaxed text-zinc-300">
+                    “{t.quote}”
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="apply"
+          className="mx-auto max-w-7xl px-5 py-20 sm:px-8"
+        >
+          <div className="grid gap-8 rounded-3xl border border-[#D4AF37]/20 bg-gradient-to-b from-white/8 to-white/[0.03] p-8 shadow-2xl backdrop-blur-lg sm:p-10 lg:grid-cols-2">
+            <div>
+              <h3 className="text-2xl font-semibold sm:text-3xl">
+                Apply for Elite Face 2026
+              </h3>
+
+              <p className="mt-3 text-sm leading-relaxed text-zinc-300">
+                Minimal, premium, and built for
+                serious talent.
+              </p>
+            </div>
+
+            <form
+              onSubmit={handleSubmit}
+              className="grid grid-cols-1 gap-4 sm:grid-cols-2"
+            >
+              {['name', 'age', 'category', 'city'].map(
+                (field) => (
+                  <input
+                    key={field}
+                    name={field}
+                    placeholder={
+                      field[0].toUpperCase() +
+                      field.slice(1)
+                    }
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        [field]: e.target.value,
+                      })
+                    }
+                    className="rounded-xl border border-zinc-700 bg-black/45 px-4 py-3 text-sm outline-none transition focus:border-[#D4AF37]/60"
+                  />
+                )
+              )}
+
+              <button
+                type="submit"
+                className="mt-2 rounded-full bg-gradient-to-r from-amber-300 to-yellow-200 py-3 text-xs font-bold uppercase tracking-[0.22em] text-black transition hover:opacity-90 sm:col-span-2"
+              >
+                Submit Application
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <footer className="border-t border-white/10 px-5 py-10 sm:px-8">
+          <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 text-xs uppercase tracking-[0.2em] text-zinc-400 sm:flex-row">
+            <BrandLogo />
+
+            <p>© 2026 Elite Face India</p>
+
+            <div className="flex gap-5">
+              <a href="#" className="hover:text-amber-200">
+                Instagram
+              </a>
+
+              <a href="#" className="hover:text-amber-200">
+                Behance
+              </a>
+
+              <a href="#" className="hover:text-amber-200">
+                Dribbble
+              </a>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </>
   );
 }
 
